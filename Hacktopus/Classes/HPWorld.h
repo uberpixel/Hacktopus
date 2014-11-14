@@ -11,6 +11,8 @@
 
 #include <Rayne/Rayne.h>
 
+#include "HPEnemy.h"
+
 namespace HP
 {
 	class World : public RN::World

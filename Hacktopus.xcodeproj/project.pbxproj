@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5D1E7D21A16907400107ED8 /* HPEnemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5D1E7D01A16907400107ED8 /* HPEnemy.cpp */; };
+		D5D1E7D31A16907400107ED8 /* HPEnemy.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D1E7D11A16907400107ED8 /* HPEnemy.h */; };
 		E915B6481A168A1A00D1F435 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E915B6471A168A1A00D1F435 /* main.cpp */; };
 		E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */; };
 		E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3931A168A6A00742985 /* HPApplication.cpp */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D5D1E7D01A16907400107ED8 /* HPEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPEnemy.cpp; path = Classes/HPEnemy.cpp; sourceTree = "<group>"; };
+		D5D1E7D11A16907400107ED8 /* HPEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPEnemy.h; path = Classes/HPEnemy.h; sourceTree = "<group>"; };
 		E915B63C1A168A1A00D1F435 /* Hacktopus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacktopus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E915B6471A168A1A00D1F435 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "Supporting files/main.cpp"; sourceTree = "<group>"; };
 		E915B6491A168A1A00D1F435 /* Hacktopus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Hacktopus-Info.plist"; path = "Supporting files/Hacktopus-Info.plist"; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				E934C3941A168A6A00742985 /* HPApplication.h */,
 				E934C3951A168A6A00742985 /* HPWorld.cpp */,
 				E934C3961A168A6A00742985 /* HPWorld.h */,
+				D5D1E7D01A16907400107ED8 /* HPEnemy.cpp */,
+				D5D1E7D11A16907400107ED8 /* HPEnemy.h */,
 			);
 			name = Classes;
 			path = Hacktopus;
@@ -87,6 +93,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E934C39A1A168A6A00742985 /* HPWorld.h in Headers */,
+				D5D1E7D31A16907400107ED8 /* HPEnemy.h in Headers */,
 				E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */,
 				E934C3981A168A6A00742985 /* HPApplication.h in Headers */,
 			);
@@ -167,6 +174,7 @@
 			files = (
 				E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */,
 				E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */,
+				D5D1E7D21A16907400107ED8 /* HPEnemy.cpp in Sources */,
 				E915B6481A168A1A00D1F435 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

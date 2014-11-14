@@ -20,7 +20,7 @@ namespace HP
 	{
 		SetTitle("Hacktopus");
 		
-		RN::WindowConfiguration *configuration = new RN::WindowConfiguration(1920, 1080);
+		RN::WindowConfiguration *configuration = new RN::WindowConfiguration(960, 600);
 		RN::Window::GetSharedInstance()->ActivateConfiguration(configuration->Autorelease(), 0);
 
 		RN::World *world = new World();
