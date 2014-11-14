@@ -1,0 +1,316 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E915B6481A168A1A00D1F435 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E915B6471A168A1A00D1F435 /* main.cpp */; };
+		E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */; };
+		E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3931A168A6A00742985 /* HPApplication.cpp */; };
+		E934C3981A168A6A00742985 /* HPApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3941A168A6A00742985 /* HPApplication.h */; };
+		E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3951A168A6A00742985 /* HPWorld.cpp */; };
+		E934C39A1A168A6A00742985 /* HPWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3961A168A6A00742985 /* HPWorld.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E915B63C1A168A1A00D1F435 /* Hacktopus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacktopus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E915B6471A168A1A00D1F435 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "Supporting files/main.cpp"; sourceTree = "<group>"; };
+		E915B6491A168A1A00D1F435 /* Hacktopus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Hacktopus-Info.plist"; path = "Supporting files/Hacktopus-Info.plist"; sourceTree = "<group>"; };
+		E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Hacktopus-Prefix.pch"; path = "Supporting files/Hacktopus-Prefix.pch"; sourceTree = "<group>"; };
+		E934C3931A168A6A00742985 /* HPApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPApplication.cpp; path = Classes/HPApplication.cpp; sourceTree = "<group>"; };
+		E934C3941A168A6A00742985 /* HPApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPApplication.h; path = Classes/HPApplication.h; sourceTree = "<group>"; };
+		E934C3951A168A6A00742985 /* HPWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPWorld.cpp; path = Classes/HPWorld.cpp; sourceTree = "<group>"; };
+		E934C3961A168A6A00742985 /* HPWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPWorld.h; path = Classes/HPWorld.h; sourceTree = "<group>"; };
+		E934C39B1A168A7500742985 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Hacktopus/Resources; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E915B6381A168A1A00D1F435 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E915B6321A168A1900D1F435 = {
+			isa = PBXGroup;
+			children = (
+				E915B63F1A168A1A00D1F435 /* Classes */,
+				E934C39B1A168A7500742985 /* Resources */,
+				E915B6461A168A1A00D1F435 /* Supporting files */,
+				E915B63D1A168A1A00D1F435 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E915B63D1A168A1A00D1F435 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E915B63C1A168A1A00D1F435 /* Hacktopus.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E915B63F1A168A1A00D1F435 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E934C3931A168A6A00742985 /* HPApplication.cpp */,
+				E934C3941A168A6A00742985 /* HPApplication.h */,
+				E934C3951A168A6A00742985 /* HPWorld.cpp */,
+				E934C3961A168A6A00742985 /* HPWorld.h */,
+			);
+			name = Classes;
+			path = Hacktopus;
+			sourceTree = "<group>";
+		};
+		E915B6461A168A1A00D1F435 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				E915B6471A168A1A00D1F435 /* main.cpp */,
+				E915B6491A168A1A00D1F435 /* Hacktopus-Info.plist */,
+				E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */,
+			);
+			name = "Supporting files";
+			path = Hacktopus;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E915B6391A168A1A00D1F435 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E934C39A1A168A6A00742985 /* HPWorld.h in Headers */,
+				E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */,
+				E934C3981A168A6A00742985 /* HPApplication.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E915B63B1A168A1A00D1F435 /* Hacktopus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E915B6511A168A1A00D1F435 /* Build configuration list for PBXNativeTarget "Hacktopus" */;
+			buildPhases = (
+				E915B6371A168A1A00D1F435 /* Sources */,
+				E915B6381A168A1A00D1F435 /* Frameworks */,
+				E915B6391A168A1A00D1F435 /* Headers */,
+				E915B63A1A168A1A00D1F435 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Hacktopus;
+			productName = Hacktopus;
+			productReference = E915B63C1A168A1A00D1F435 /* Hacktopus.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E915B6331A168A1900D1F435 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Überpixel";
+				TargetAttributes = {
+					E915B63B1A168A1A00D1F435 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = E915B6361A168A1900D1F435 /* Build configuration list for PBXProject "Hacktopus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E915B6321A168A1900D1F435;
+			productRefGroup = E915B63D1A168A1A00D1F435 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E915B63B1A168A1A00D1F435 /* Hacktopus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E915B63A1A168A1A00D1F435 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "OUTPUT_DIR=\"$BUILT_PRODUCTS_DIR/$CONTENTS_FOLDER_PATH/Resources/\"\nRESOURCES_DIR=\"$PROJECT_DIR/$TARGET_NAME/Resources/\"\n\nrsync -avz \"$RESOURCES_DIR\" \"$OUTPUT_DIR\"\n\t\t\t\t\t";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E915B6371A168A1A00D1F435 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */,
+				E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */,
+				E915B6481A168A1A00D1F435 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E915B64F1A168A1A00D1F435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		E915B6501A168A1A00D1F435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		E915B6521A168A1A00D1F435 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hacktopus/Supporting files/Hacktopus-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/include/rayne/,
+					"\"$(SRCROOT)/Hacktopus/Vendor\"",
+				);
+				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib/,
+				);
+				OTHER_LDFLAGS = "-lRayne";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E915B6531A168A1A00D1F435 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hacktopus/Supporting files/Hacktopus-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"NDEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/include/rayne/,
+					"\"$(SRCROOT)/Hacktopus/Vendor\"",
+				);
+				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/lib/,
+				);
+				OTHER_LDFLAGS = "-lRayne";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E915B6361A168A1900D1F435 /* Build configuration list for PBXProject "Hacktopus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E915B64F1A168A1A00D1F435 /* Debug */,
+				E915B6501A168A1A00D1F435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E915B6511A168A1A00D1F435 /* Build configuration list for PBXNativeTarget "Hacktopus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E915B6521A168A1A00D1F435 /* Debug */,
+				E915B6531A168A1A00D1F435 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E915B6331A168A1900D1F435 /* Project object */;
+}
