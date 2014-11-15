@@ -171,9 +171,9 @@ namespace HP
 		
 		RN::UniChar character = event->GetCharacter();
 		
-		if(character == _character)
+		if(RN::CodePoint(character).GetLowerCase() == RN::CodePoint(_character).GetLowerCase())
 		{
-			PushInput(character);
+			PushInput(_character);
 			
 			_index ++;
 			_wasLastCorrect = true;
