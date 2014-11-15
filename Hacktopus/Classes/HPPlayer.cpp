@@ -66,6 +66,9 @@ namespace HP
 	
 	void Player::Attack(Enemy *target)
 	{
+		if(target->IsKilled())
+			return;
+		
 		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/test.ogg");
 		World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 		

@@ -27,6 +27,7 @@ namespace HP
 		
 		bool ConsumeButton(int button);
 		bool IsActive() { return _active; }
+		bool IsKilled() { return _killed; }
 		
 	private:
 		static RN::Texture *GetTextureForButton(int button);
@@ -35,6 +36,7 @@ namespace HP
 		bool _dead;
 		bool _active;
 		bool _damagedDone;
+		bool _killed;
 		
 		float _cooldown;
 		

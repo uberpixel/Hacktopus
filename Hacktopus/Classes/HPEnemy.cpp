@@ -19,6 +19,7 @@ namespace HP
 		AnimatableEntity(false),
 		_dead(false),
 		_active(true),
+		_killed(false),
 		_qteItems(new RN::Array()),
 		_shock(nullptr)
 	{
@@ -203,6 +204,7 @@ namespace HP
 	
 	void Enemy::kill()
 	{
+		_killed = true;
 		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(150), [&]{_dead = true; _active = false;}, false);
 	}
 }
