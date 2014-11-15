@@ -108,6 +108,7 @@ namespace HP
 		
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));
 			PrintCommand(RNCSTR("Select: [n]ew game, [h]elp, [e]xit"));
+			PrintCommand(RNCSTR("Confirm with [enter]"));
 		}
 		
 		_active  = true;
@@ -120,9 +121,16 @@ namespace HP
 	void HackingConsole::StartHacking()
 	{
 		_hacking = true;
+		_canSpawn = false;
 		
-		PrintCommand(RNCSTR("cd /sbin/iggj7/"));
-		PrintCommand(RNCSTR("./masterhack"));
+		//PrintCommand(RNCSTR("cd /sbin/iggj7/"));
+		//PrintCommand(RNCSTR("./masterhack"));
+		
+		PrintCommand(RNCSTR("Type what you see on the screen!"));
+		
+		_wordlist->InsertObjectAtIndex(RNCSTR("type this"), 0);
+		_wordlist->InsertObjectAtIndex(RNCSTR("hatch unlocked and opened"), 1);
+		_wordlist->InsertObjectAtIndex(RNCSTR("click on the angry scientists"), 2);
 		
 		PickWord();
 	}
@@ -131,7 +139,7 @@ namespace HP
 	{
 		PrintOutput(_input);
 		
-		if(_input->IsEqual(RNCSTR("n")))
+		if(_input->IsEqual(RNCSTR("n")) || _input->IsEqual(RNCSTR("new game")))
 		{
 			StartHacking();
 		}
@@ -139,7 +147,8 @@ namespace HP
 		{
 			PrintOutput(RNCSTR("Hack the mainframe by typing the"));
 			PrintOutput(RNCSTR("hacker commands. Slap the pesky"));
-			PrintCommand(RNCSTR("scientists before they get to you"));
+			PrintOutput(RNCSTR("scientists before they get to you."));
+			PrintCommand(RNCSTR("Case doesn't matter"));
 		}
 		else if(_input->IsEqual(RNCSTR("e")))
 		{
@@ -240,8 +249,16 @@ namespace HP
 		
 		_wordlistIndex = (_wordlistIndex + 1) % _wordlist->GetCount();
 		
+		if(!_canSpawn && _wordlistIndex > 2)
+			_canSpawn = true;
+		
 		if(_wordlistIndex == 0)
+		{
+			for(int i = 0; i < 3; i ++)
+				_wordlist->RemoveObjectAtIndex(0);
+			
 			ShuffleWords();
+		}
 		
 		UpdateCharacter();
 	}
@@ -318,6 +335,9 @@ namespace HP
 		}
 		else
 		{
+			if(!_canSpawn)
+				return;
+			
 			if(_cooldown <= 0.0f)
 				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
 			

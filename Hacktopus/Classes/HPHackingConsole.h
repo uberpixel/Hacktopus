@@ -25,6 +25,7 @@ namespace HP
 		void Update(float delta);
 		
 		bool IsHacking() const { return _hacking; }
+		bool CanSpawn() const { return _canSpawn; }
 		
 	private:
 		void ParseInput();
@@ -42,6 +43,7 @@ namespace HP
 		bool _active;
 		bool _hacking;
 		bool _wasLastCorrect;
+		bool _canSpawn;
 		
 		float _cooldown;
 		

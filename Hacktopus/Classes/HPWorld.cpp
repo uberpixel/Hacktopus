@@ -126,17 +126,20 @@ namespace HP
 			else
 				_time = _rng->GetRandomFloatRange(1.0f, 2.0f);
 			
-			Enemy *enemy = new Enemy();
-			float height = _rng->GetRandomFloatRange(180.0f, 330.0f);
-			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), height, (height < 255)?-5000.0f:-2000.0f));
-			
-			if(_gamepad)
-				enemy->GenerateQTE();
-			
-			if(enemy->GetPosition().x > 0.0f)
-				enemy->SetSize(enemy->GetSize()*RN::Vector2(-1.0f, 1.0f));
-			
-			_enemies->AddObject(enemy->Autorelease());
+			if(_console->CanSpawn())
+			{
+				Enemy *enemy = new Enemy();
+				float height = _rng->GetRandomFloatRange(180.0f, 330.0f);
+				enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), height, (height < 255)?-5000.0f:-2000.0f));
+				
+				if(_gamepad)
+					enemy->GenerateQTE();
+				
+				if(enemy->GetPosition().x > 0.0f)
+					enemy->SetSize(enemy->GetSize()*RN::Vector2(-1.0f, 1.0f));
+				
+				_enemies->AddObject(enemy->Autorelease());
+			}
 		}
 		
 		RN::Array *deleted = _enemies->GetObjectsPassingTest<Enemy>([](Enemy *enemy, bool &stop) -> bool {
