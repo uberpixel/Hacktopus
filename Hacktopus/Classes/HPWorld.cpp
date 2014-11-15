@@ -38,6 +38,7 @@ namespace HP
 		background->GetMaterial()->SetBlending(false);
 		
 		Player::GetSharedInstance();
+		ProgressDoor::GetSharedInstance();
 	}
 
 	void World::FinishLoading(RN::Deserializer *deserializer)

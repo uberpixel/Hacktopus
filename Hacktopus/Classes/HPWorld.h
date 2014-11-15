@@ -13,6 +13,7 @@
 #include "HPHackingConsole.h"
 #include "HPEnemy.h"
 #include "HPPlayer.h"
+#include "HPProgressDoor.h"
 
 namespace HP
 {

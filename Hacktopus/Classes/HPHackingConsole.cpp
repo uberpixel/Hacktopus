@@ -180,6 +180,7 @@ namespace HP
 			
 			if(_index == _word->GetLength())
 			{
+				ProgressDoor::GetSharedInstance()->Progress(10.0f);
 				PickWord();
 				return;
 			}
@@ -189,6 +190,7 @@ namespace HP
 		}
 		else
 		{
+			ProgressDoor::GetSharedInstance()->Progress(-10.0f);
 			_wasLastCorrect = false;
 			UpdateCharacter();
 		}

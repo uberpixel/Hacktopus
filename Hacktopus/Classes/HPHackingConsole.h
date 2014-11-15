@@ -10,6 +10,7 @@
 #define __Hacktopus__HPWordProcessor__
 
 #include <Rayne/Rayne.h>
+#include "HPProgressDoor.h"
 
 namespace HP
 {
