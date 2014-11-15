@@ -21,12 +21,15 @@ namespace HP
 		_active(true),
 		_qteItems(new RN::Array())
 	{
-		SetTexture(RN::Texture::WithFile("Textures/enemy.png"));
+		SetDefaultTexture(RN::Texture::WithFile("Textures/Mensch1_walk+0.png"));
 		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
 		GetMaterial()->SetLighting(false);
 		GetMaterial()->SetDepthWrite(false);
 		GetMaterial()->SetBlending(true);
 		GetMaterial()->SetCullMode(RN::Material::CullMode::None);
+		
+		PlayAnimation("Textures/Mensch1_walk");
+		RepeateAnimation();
 	}
 	
 	Enemy::~Enemy()
@@ -116,6 +119,8 @@ namespace HP
 	
 	void Enemy::Update(float delta)
 	{
+		AnimatableEntity::Update(delta);
+		
 		if(!_dead)
 		{
 			Translate(RN::Vector3(delta*200.0f*((GetPosition().x > 0)?-1.0f:1.0f), 0.0f, 0.0f));
