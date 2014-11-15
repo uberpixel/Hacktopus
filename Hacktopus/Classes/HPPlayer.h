@@ -11,6 +11,7 @@
 
 #include <Rayne/Rayne.h>
 #include "HPAnimatableEntity.h"
+#include "HPEnemy.h"
 
 namespace HP
 {
@@ -20,7 +21,7 @@ namespace HP
 		Player();
 		~Player();
 		
-		void Attack(RN::SceneNode *target);
+		void Attack(Enemy *target);
 		
 	private:
 		RN::Billboard *_body;

@@ -14,7 +14,7 @@ namespace HP
 	RNDefineMeta(Enemy, RN::Billboard)
 	
 	Enemy::Enemy()
-	: RN::Billboard(false)
+	: RN::Billboard(false), _dead(false)
 	{
 		SetTexture(RN::Texture::WithFile("Textures/enemy.png"));
 		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight()));
@@ -31,25 +31,43 @@ namespace HP
 	
 	void Enemy::Update(float delta)
 	{
-		Translate(RN::Vector3(delta*200.0f*((GetPosition().x > 0)?-1.0f:1.0f), 0.0f, 0.0f));
-		if(RN::Math::FastAbs(GetPosition().x) < 100)
+		if(!_dead)
 		{
-			RemoveFromWorld();
-		}
+			Translate(RN::Vector3(delta*200.0f*((GetPosition().x > 0)?-1.0f:1.0f), 0.0f, 0.0f));
 		
-		RN::Input *input = RN::Input::GetSharedInstance();
-		
-		float xblubb = RN::Math::FastAbs(input->GetMousePosition().x*2.0f-960-GetPosition().x);
-		float yblubb = RN::Math::FastAbs(input->GetMousePosition().y*2.0f-600-GetPosition().y);
-		if(xblubb < RN::Math::FastAbs(GetSize().x*0.5f))
-		{
-			if(yblubb < RN::Math::FastAbs(GetSize().y*0.5f))
+			RN::Input *input = RN::Input::GetSharedInstance();
+			
+			float xblubb = RN::Math::FastAbs(input->GetMousePosition().x*2.0f-960-GetPosition().x);
+			float yblubb = RN::Math::FastAbs(input->GetMousePosition().y*2.0f-600-GetPosition().y);
+			if(xblubb < RN::Math::FastAbs(GetSize().x*0.5f))
 			{
-				if(input->IsMousePressed(0))
+				if(yblubb < RN::Math::FastAbs(GetSize().y*0.5f))
 				{
-					Player::GetSharedInstance()->Attack(this);
+					if(input->IsMousePressed(0))
+					{
+						Player::GetSharedInstance()->Attack(this);
+					}
 				}
 			}
+			
+			if(RN::Math::FastAbs(GetPosition().x) < 100)
+			{
+				RemoveFromWorld();
+			}
 		}
+		else
+		{
+			Rotate(RN::Vector3(0.0f, 0.0f, 300.0f*delta*((GetPosition().x > 0)?1.0f:-1.0f)));
+			Translate(RN::Vector3(delta*1000.0f*((GetPosition().x > 0)?1.0f:-1.0f), -500.0f*delta, 0.0f));
+			if(RN::Math::FastAbs(GetPosition().x) > 1100)
+			{
+				RemoveFromWorld();
+			}
+		}
+	}
+	
+	void Enemy::kill()
+	{
+		_dead = true;
 	}
 }

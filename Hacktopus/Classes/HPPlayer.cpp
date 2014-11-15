@@ -41,10 +41,10 @@ namespace HP
 		
 	}
 	
-	void Player::Attack(RN::SceneNode *target)
+	void Player::Attack(Enemy *target)
 	{
 		RN::Vector3 position = target->GetPosition();
-		target->RemoveFromWorld();
+		target->kill();
 	
 		if(position.x > 0)
 			_armRight->PlayAnimation("Textures/tentakelarm");

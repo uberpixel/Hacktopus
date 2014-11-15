@@ -20,9 +20,10 @@ namespace HP
 		~Enemy();
 		
 		void Update(float delta) override;
+		void kill();
 		
 	private:
-		
+		bool _dead;
 		
 		RNDeclareMeta(Enemy)
 	};
