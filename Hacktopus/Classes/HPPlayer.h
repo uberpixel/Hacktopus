@@ -23,7 +23,10 @@ namespace HP
 		
 	private:
 		
+		RNDeclareSingleton(Player)
 	};
+	
+	
 }
 
 #endif /* defined(__Hacktopus__HPPlayer__) */

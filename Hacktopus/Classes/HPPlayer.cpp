@@ -10,6 +10,8 @@
 
 namespace HP
 {
+	RNDefineSingleton(Player)
+	
 	Player::Player()
 	{
 		
