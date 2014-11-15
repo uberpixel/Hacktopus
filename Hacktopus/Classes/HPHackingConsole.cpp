@@ -236,6 +236,17 @@ namespace HP
 				return;
 			}
 			
+			if(character == 63)
+			{
+				if(_input->GetLength() > 0)
+				{
+					_input->ReplaceCharacters(RNCSTR(""), RN::Range(_input->GetLength() - 1, 1));
+					UpdateLabels();
+				}
+				
+				return;
+			}
+			
 			_input->Append(RNSTR("%c", character));
 			UpdateLabels();
 			return;
