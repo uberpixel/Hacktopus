@@ -109,7 +109,7 @@ namespace HP
 				_time = _rng->GetRandomFloatRange(1.0f, 2.0f);
 			
 			Enemy *enemy = new Enemy();
-			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), _rng->GetRandomFloatRange(150.0f, 330.0f), -8000.0f));
+			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), _rng->GetRandomFloatRange(180.0f, 330.0f), -8000.0f));
 			
 			if(_gamepad)
 				enemy->GenerateQTE();

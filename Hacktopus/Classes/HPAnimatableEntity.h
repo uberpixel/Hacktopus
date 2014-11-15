@@ -19,6 +19,7 @@ namespace HP
 		AnimatableEntity();
 		AnimatableEntity(bool doublesided);
 		
+		void RepeateAnimation();
 		void SetDefaultTexture(RN::Texture *texture);
 		
 		void Update(float delta) override;
@@ -36,6 +37,8 @@ namespace HP
 		
 		float _duration;
 		float _accumulated;
+		
+		bool _repeat;
 	};
 }
 

@@ -10,10 +10,11 @@
 #define __Hacktopus__HPEnemy__
 
 #include <Rayne/Rayne.h>
+#include "HPAnimatableEntity.h"
 
 namespace HP
 {
-	class Enemy : public RN::Billboard
+	class Enemy : public AnimatableEntity
 	{
 	public:
 		Enemy();

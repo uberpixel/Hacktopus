@@ -57,6 +57,8 @@ namespace HP
 		_accumulated = 0;
 		_index = 0;
 		
+		_repeat = false;
+		
 		RN::SafeRelease(_frames);
 		
 		size_t i = 0;
@@ -84,6 +86,8 @@ namespace HP
 		_accumulated = 0;
 		_index = 0;
 		
+		_repeat = false;
+		
 		RN::SafeRelease(_frames);
 		
 		_frames = RN::JSONSerialization::JSONObjectFromData<RN::Array>(RN::Data::WithContentsOfFile(name))->Retain();
@@ -99,12 +103,22 @@ namespace HP
 		UpdateFrame();
 	}
 	
+	void AnimatableEntity::RepeateAnimation()
+	{
+		_repeat = true;
+	}
+	
 	
 	void AnimatableEntity::UpdateFrame()
 	{
+		RN::Vector2 size = GetSize();
+		
 		if(!_frames)
 		{
 			SetTexture(_default);
+			
+			if(size.GetLength() > RN::k::EpsilonFloat)
+				SetSize(size);
 			return;
 		}
 		
@@ -114,6 +128,10 @@ namespace HP
 		RN::Number *duration = frame->GetObjectForKey<RN::Number>(RNCSTR("duration"));
 		
 		SetTexture(texture);
+		
+		if(size.GetLength() > RN::k::EpsilonFloat)
+			SetSize(size);
+		
 		_duration = duration->GetDoubleValue();
 	}
 	
@@ -130,7 +148,7 @@ namespace HP
 			_accumulated -= _duration;
 			_index = ((_index + 1) % _frames->GetCount());
 			
-			if(_index == 0)
+			if(_index == 0 && !_repeat)
 				RN::SafeRelease(_frames);
 			
 			UpdateFrame();
