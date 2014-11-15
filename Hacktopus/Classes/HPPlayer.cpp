@@ -47,8 +47,8 @@ namespace HP
 		target->kill();
 	
 		if(position.x > 0)
-			_armRight->PlayAnimation("Textures/tentakelarm");
+			_armRight->PlayAnimationFile("Animations/hektor_slap1.json");
 		else
-			_armLeft->PlayAnimation("Textures/tentakelarm");
+			_armLeft->PlayAnimationFile("Animations/hektor_slap1.json");
 	}
 }

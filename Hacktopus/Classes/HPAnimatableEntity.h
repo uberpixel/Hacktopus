@@ -23,6 +23,7 @@ namespace HP
 		
 		void Update(float delta) override;
 		void PlayAnimation(const std::string &name, float duration = 0.1);
+		void PlayAnimationFile(const std::string &name);
 		
 	private:
 		RN::Texture *AttemptToLoad(const std::string &name, size_t index);
@@ -31,7 +32,8 @@ namespace HP
 		RN::Texture *_default;
 		
 		size_t _index;
-		RN::Array *_textures;
+		RN::Array *_frames;
+		
 		float _duration;
 		float _accumulated;
 	};
