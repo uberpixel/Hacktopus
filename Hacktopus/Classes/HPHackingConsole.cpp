@@ -260,6 +260,22 @@ namespace HP
 		}
 		
 		
+		// Whitespace is optional
+		if(RN::CodePoint(_character).IsWhitespace() && !RN::CodePoint(character).IsWhitespace())
+		{
+			if(RN::CodePoint(_word->GetCharacterAtIndex(_index + 1)).GetLowerCase() == RN::CodePoint(character).GetLowerCase())
+			{
+				_index ++;
+				_character = _word->GetCharacterAtIndex(_index);
+				
+				PushInput(RN::CodePoint::ConvertCharacter(' '));
+			}
+		}
+		
+		// Enter at the beginning is optional too
+		if(_index == 0 && RN::CodePoint(character).IsNewline())
+			return;
+		
 		if(RN::CodePoint(character).GetLowerCase() == RN::CodePoint(_character).GetLowerCase())
 		{
 			PushInput(_character);
