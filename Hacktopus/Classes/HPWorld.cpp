@@ -53,6 +53,11 @@ namespace HP
 		if(_time < 0.0f)
 		{
 			_time = _rng->GetRandomFloatRange(2.0f, 5.0f);
+			
+			
+			if(!_console->IsHacking())
+				return;
+			
 			Enemy *enemy = new Enemy();
 			enemy->SetPosition(RN::Vector3(1000.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), _rng->GetRandomFloatRange(150.0f, 330.0f), -8000.0f));
 			if(enemy->GetPosition().x > 0.0f)

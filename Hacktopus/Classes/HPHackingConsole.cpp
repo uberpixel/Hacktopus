@@ -14,6 +14,8 @@ namespace HP
 		_active(false),
 		_word(nullptr),
 		_widget(nullptr),
+		_hacking(false),
+		_input(nullptr),
 		_generator(new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister)),
 		_wordlistIndex(0)
 	{
@@ -89,10 +91,53 @@ namespace HP
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));
 			PrintCommand(RNCSTR("cd /sbin/iggj7/"));
 			PrintCommand(RNCSTR("./masterhack"));
+			PrintCommand(RNCSTR("Please select: [n]ew game, [e]xit"));
 		}
 		
-		_active = true;
+		_active  = true;
+		_hacking = false;
+		
+		if(!_input)
+			_input = new RN::String();
+	}
+	
+	void HackingConsole::StartHacking()
+	{
+		_hacking = true;
 		PickWord();
+	}
+	
+	void HackingConsole::ParseInput()
+	{
+		PrintOutput(_input);
+		
+		if(_input->IsEqual(RNCSTR("n")))
+		{
+			StartHacking();
+		}
+		else if(_input->IsEqual(RNCSTR("e")))
+		{
+			RN::Kernel::GetSharedInstance()->Exit();
+		}
+		else if(_input->IsEqual(RNCSTR("ls")))
+		{
+			PrintOutput(RNCSTR("."));
+			PrintOutput(RNCSTR(".."));
+			PrintCommand(RNCSTR("masterhack"));
+		}
+		else if(_input->GetRangeOfString(RNCSTR("cat")).origin == 0)
+		{
+			PrintCommand(RNCSTR("meow meow meow"));
+		}
+		else
+		{
+			PrintCommand(RNSTR("Unrecognized command '%s'", _input->GetUTF8String()));
+		}
+		
+		RN::SafeRelease(_input);
+		_input = new RN::String();
+		
+		UpdateLabels();
 	}
 	
 	
@@ -125,8 +170,20 @@ namespace HP
 			shadow->Append(left);
 		}
 		
+		RN::String *final = _text->Copy();
+		if(!_hacking && _input)
+			final->Append(_input);
+		
 		_shadow->SetText(shadow);
-		_label->SetText(_text);
+		_label->SetText(final->Autorelease());
+	}
+	
+	void HackingConsole::PrintOutput(RN::String *output)
+	{
+		_text->Append(output);
+		_text->Append("\n");
+		
+		UpdateLabels();
 	}
 	
 	void HackingConsole::PrintCommand(RN::String *command)
@@ -170,6 +227,20 @@ namespace HP
 			return;
 		
 		RN::UniChar character = event->GetCharacter();
+		
+		if(!_hacking)
+		{
+			if(RN::CodePoint(character).IsNewline())
+			{
+				ParseInput();
+				return;
+			}
+			
+			_input->Append(RNSTR("%c", character));
+			UpdateLabels();
+			return;
+		}
+		
 		
 		if(RN::CodePoint(character).GetLowerCase() == RN::CodePoint(_character).GetLowerCase())
 		{

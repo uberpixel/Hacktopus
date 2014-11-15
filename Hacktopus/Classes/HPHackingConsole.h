@@ -20,12 +20,17 @@ namespace HP
 		HackingConsole();
 		
 		void Activate();
+		void StartHacking();
+		
+		bool IsHacking() const { return _hacking; }
 		
 	private:
+		void ParseInput();
 		void ShuffleWords();
 		
 		void UpdateLabels();
 		void PrintCommand(RN::String *command);
+		void PrintOutput(RN::String *output);
 		void PushInput(UniChar character);
 		
 		void PickWord();
@@ -33,6 +38,7 @@ namespace HP
 		void UpdateCharacter();
 		
 		bool _active;
+		bool _hacking;
 		bool _wasLastCorrect;
 		
 		RN::UI::Font *_font;
@@ -40,6 +46,7 @@ namespace HP
 		RN::UI::Color *_shadowColor;
 		
 		RN::String *_text;
+		RN::String *_input;
 		
 		RN::RandomNumberGenerator *_generator;
 		
