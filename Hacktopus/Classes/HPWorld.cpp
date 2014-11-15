@@ -89,7 +89,7 @@ namespace HP
 		miniScreen->RepeateAnimation();
 		miniScreen->SetPosition(RN::Vector3(0.0f, 0.0f, -9000.0f));
 		
-		RN::Camera *uiCamera = RN::UI::Server::GetSharedInstance()->GetCamera();
+		/*RN::Camera *uiCamera = RN::UI::Server::GetSharedInstance()->GetCamera();
 		uiCamera->SetFlags(uiCamera->GetFlags()|RN::Camera::Flags::NoFlush);
 		RN::Texture *uiTexture = uiCamera->GetRenderTarget();
 		RN::Billboard *uiBillboard = new RN::Billboard(false);
@@ -98,7 +98,7 @@ namespace HP
 		uiBillboard->SetScale(RN::Vector3(-1.0f, -1.0f, 1.0f));
 		uiBillboard->GetMaterial()->SetLighting(false);
 		uiBillboard->GetMaterial()->SetCullMode(RN::Material::CullMode::None);
-		_camera->SetPriority(10000);
+		_camera->SetPriority(10000);*/
 		
 		Player::GetSharedInstance();
 		ProgressDoor::GetSharedInstance();

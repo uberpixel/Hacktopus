@@ -102,12 +102,6 @@ namespace HP
 			widgetRect.width *= resolution.x/960.0f;
 			widgetRect.height *= resolution.y/600.0f;
 			
-			if(RN::Math::Compare(resolution.y, 360))
-			{
-				widgetRect.x -= 50.0f;
-				widgetRect.y -= 100.0f;
-				widgetRect.height += 100.0f;
-			}
 			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, widgetRect);
 			_widget->GetContentView()->AddSubview(_shadow);
 			_widget->GetContentView()->AddSubview(_label);
@@ -147,7 +141,7 @@ namespace HP
 	{
 		PrintOutput(_input);
 		
-		if(_input->IsEqual(RNCSTR("n")) || _input->IsEqual(RNCSTR("new game")))
+		if(_input->IsEqual(RNCSTR("n")) || _input->IsEqual(RNCSTR("new game")) || _input->IsEqual(RNCSTR("./masterhack")))
 		{
 			StartHacking();
 		}
