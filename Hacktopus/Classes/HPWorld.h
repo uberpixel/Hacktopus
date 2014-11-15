@@ -12,6 +12,7 @@
 #include <Rayne/Rayne.h>
 #include "HPHackingConsole.h"
 #include "HPEnemy.h"
+#include "HPPlayer.h"
 
 namespace HP
 {
@@ -29,6 +30,8 @@ namespace HP
 	private:
 		RN::Camera *_camera;
 		HackingConsole *_console;
+		RN::RandomNumberGenerator *_rng;
+		float _time;
 	};
 }
 
