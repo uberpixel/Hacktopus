@@ -31,6 +31,8 @@ namespace HP
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
 		
 	private:
+		RN::Array *_enemies;
+		
 		RN::Camera *_camera;
 		HackingConsole *_console;
 		RN::RandomNumberGenerator *_rng;
@@ -38,6 +40,9 @@ namespace HP
 		float _shakeTime;
 		float _shakeStrength;
 		RN::openal::AudioWorld *_audioWorld;
+		RN::GamepadDevice *_gamepad;
+		
+		uint32_t _pressed;
 	};
 }
 

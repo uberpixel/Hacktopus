@@ -22,8 +22,20 @@ namespace HP
 		void Update(float delta) override;
 		void kill();
 		
+		void GenerateQTE();
+		
+		bool ConsumeButton(int button);
+		bool IsActive() { return _active; }
+		
 	private:
+		static RN::Texture *GetTextureForButton(int button);
+		void UpdateQTEItems();
+		
 		bool _dead;
+		bool _active;
+		
+		std::vector<int> _qte;
+		RN::Array *_qteItems;
 		
 		RNDeclareMeta(Enemy)
 	};

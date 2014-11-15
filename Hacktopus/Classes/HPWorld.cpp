@@ -11,12 +11,35 @@
 namespace HP
 {
 	World::World() :
-		RN::World("GenericSceneManager")
+		RN::World("GenericSceneManager"),
+		_gamepad(nullptr),
+		_enemies(new RN::Array()),
+		_time(0),
+		_pressed(0)
 	{
 		_rng = new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister);
 		
 		_audioWorld = new RN::openal::AudioWorld();
 		AddAttachment(_audioWorld);
+		
+		RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputInputDeviceRegistered, [&](RN::Message *message) {
+			
+			if(_gamepad)
+				return;
+			
+			_gamepad = message->GetObject()->Downcast<RN::GamepadDevice>();
+			_gamepad->Retain();
+			_gamepad->Activate();
+			
+		}, this);
+		
+		RN::Array *devices = RN::Input::GetSharedInstance()->GetInputDevicesMatching(RN::InputDevice::Category::Gamepad);
+		if(devices->GetCount() > 0)
+		{
+			_gamepad = devices->GetObjectAtIndex<RN::GamepadDevice>(0);
+			_gamepad->Retain();
+			_gamepad->Activate();
+		}
 	}
 	
 	World::~World()
@@ -72,23 +95,87 @@ namespace HP
 	
 	void World::Update(float delta)
 	{
+		if(!_console->IsHacking())
+			return;
+		
+		ProgressDoor::GetSharedInstance()->Progress(-1.5 * delta);
+		
 		_time -= delta;
 		if(_time < 0.0f)
 		{
-			_time = _rng->GetRandomFloatRange(2.0f, 5.0f);
-			
-			
-			if(!_console->IsHacking())
-				return;
+			if(!_gamepad)
+				_time = _rng->GetRandomFloatRange(2.0f, 5.0f);
+			else
+				_time = _rng->GetRandomFloatRange(1.0f, 2.0f);
 			
 			Enemy *enemy = new Enemy();
 			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), _rng->GetRandomFloatRange(150.0f, 330.0f), -8000.0f));
+			
+			if(_gamepad)
+				enemy->GenerateQTE();
+			
 			if(enemy->GetPosition().x > 0.0f)
-			{
 				enemy->SetSize(enemy->GetSize()*RN::Vector2(-1.0f, 1.0f));
-			}
-			enemy->Release();
+			
+			_enemies->AddObject(enemy->Autorelease());
 		}
+		
+		RN::Array *deleted = _enemies->GetObjectsPassingTest<Enemy>([](Enemy *enemy, bool &stop) -> bool {
+			return (enemy->IsActive() == false);
+		});
+		
+		deleted->Enumerate<Enemy>([&](Enemy *enemy, size_t index, bool &stop) {
+			_enemies->RemoveObject(enemy);
+		});
+		
+		if(_gamepad)
+		{
+			std::vector<int> pressed;
+			
+#define CheckButton(n) \
+		do{ \
+			if(!_gamepad->IsButtonPressed(n)) \
+				_pressed &= ~(1 << n); \
+			\
+			if(_gamepad->IsButtonPressed(n) && !(_pressed & (1 << n))) \
+			{ \
+				_pressed |= (1 << n); \
+				pressed.push_back(n); \
+			} \
+		} while(0)
+			
+			CheckButton(4);
+			CheckButton(5);
+			CheckButton(6);
+			CheckButton(7);
+			
+			if(pressed.size() > 0)
+			{
+				bool missed = true;
+				
+				_enemies->Enumerate<Enemy>([&](Enemy *enemy, size_t index, bool &stop) {
+					
+					if(!enemy->IsActive())
+						return;
+					
+					for(int button : pressed)
+					{
+						if(!enemy->ConsumeButton(button))
+							return;
+						
+						missed = false;
+					}
+					
+				});
+				
+				if(missed)
+				{
+					ProgressDoor::GetSharedInstance()->Progress(-2.5f);
+					Screenshake(0.05, 0.1);
+				}
+			}
+		}
+		
 		
 		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 		float aspect = resolution.y/resolution.x;
@@ -99,10 +186,16 @@ namespace HP
 		{
 			float shake = _rng->GetRandomFloatRange(1.0-_shakeStrength, 1.0f);
 			_camera->SetOrthogonalFrustum(-frustomHeight*0.5f*shake, frustomHeight*0.5f*shake, -960.0f*shake, 960.0f*shake);
+			
+			if(_gamepad)
+				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(255));
 		}
 		else
 		{
 			_camera->SetOrthogonalFrustum(-frustomHeight*0.5f, frustomHeight*0.5f, -960.0f, 960.0f);
+			
+			if(_gamepad)
+				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(0));
 		}
 	}
 }
