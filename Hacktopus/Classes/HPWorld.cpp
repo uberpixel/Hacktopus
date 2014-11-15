@@ -114,6 +114,8 @@ namespace HP
 		if(!_console->IsHacking())
 			return;
 		
+		_console->Update(delta);
+		
 		ProgressDoor::GetSharedInstance()->Progress(-0.5 * delta);
 		
 		_time -= delta;

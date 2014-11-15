@@ -17,7 +17,8 @@ namespace HP
 		_hacking(false),
 		_input(nullptr),
 		_generator(new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister)),
-		_wordlistIndex(0)
+		_wordlistIndex(0),
+		_cooldown(0.0f)
 	{
 		_wordlist = RN::JSONSerialization::JSONObjectFromData<RN::Array>(RN::Data::WithContentsOfFile("Words/words.json"));
 		_wordlist->Retain();
@@ -35,6 +36,11 @@ namespace HP
 			TakeInput(event);
 			
 		}, this);
+	}
+	
+	void HackingConsole::Update(float delta)
+	{
+		_cooldown -= delta;
 	}
 	
 	void HackingConsole::ShuffleWords()
@@ -312,8 +318,12 @@ namespace HP
 		}
 		else
 		{
-			ProgressDoor::GetSharedInstance()->Progress(-5.0f);
+			if(_cooldown <= 0.0f)
+				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
+			
 			_wasLastCorrect = false;
+			_cooldown = 1.25f;
+			
 			UpdateCharacter();
 		}
 	}

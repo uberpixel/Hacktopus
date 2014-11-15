@@ -22,6 +22,8 @@ namespace HP
 		void Activate();
 		void StartHacking();
 		
+		void Update(float delta);
+		
 		bool IsHacking() const { return _hacking; }
 		
 	private:
@@ -40,6 +42,8 @@ namespace HP
 		bool _active;
 		bool _hacking;
 		bool _wasLastCorrect;
+		
+		float _cooldown;
 		
 		RN::UI::Font *_font;
 		RN::UI::Color *_textColor;
