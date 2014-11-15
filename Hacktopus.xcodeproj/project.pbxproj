@@ -19,11 +19,25 @@
 		E934C3981A168A6A00742985 /* HPApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3941A168A6A00742985 /* HPApplication.h */; };
 		E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3951A168A6A00742985 /* HPWorld.cpp */; };
 		E934C39A1A168A6A00742985 /* HPWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3961A168A6A00742985 /* HPWorld.h */; };
+		E94A226D1A17702100189A85 /* libopenal.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = E94A226C1A17702100189A85 /* libopenal.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */; };
 		E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */; };
 		E9BFB69F1A16E9DA0008044D /* HPAnimatableEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */; };
 		E9BFB6A01A16E9DA0008044D /* HPAnimatableEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB69E1A16E9DA0008044D /* HPAnimatableEntity.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E94A226B1A17700E00189A85 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				E94A226D1A17702100189A85 /* libopenal.1.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D5D1E7D01A16907400107ED8 /* HPEnemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPEnemy.cpp; path = Classes/HPEnemy.cpp; sourceTree = "<group>"; };
@@ -41,6 +55,7 @@
 		E934C3951A168A6A00742985 /* HPWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPWorld.cpp; path = Classes/HPWorld.cpp; sourceTree = "<group>"; };
 		E934C3961A168A6A00742985 /* HPWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPWorld.h; path = Classes/HPWorld.h; sourceTree = "<group>"; };
 		E934C39B1A168A7500742985 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Hacktopus/Resources; sourceTree = "<group>"; };
+		E94A226C1A17702100189A85 /* libopenal.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopenal.1.dylib; path = "Resources/Modules/rayne-openal/libopenal.1.dylib"; sourceTree = "<group>"; };
 		E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPHackingConsole.cpp; path = Classes/HPHackingConsole.cpp; sourceTree = "<group>"; };
 		E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPHackingConsole.h; path = Classes/HPHackingConsole.h; sourceTree = "<group>"; };
 		E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPAnimatableEntity.cpp; path = Classes/HPAnimatableEntity.cpp; sourceTree = "<group>"; };
@@ -101,6 +116,7 @@
 		E915B6461A168A1A00D1F435 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				E94A226C1A17702100189A85 /* libopenal.1.dylib */,
 				E915B6471A168A1A00D1F435 /* main.cpp */,
 				E915B6491A168A1A00D1F435 /* Hacktopus-Info.plist */,
 				E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */,
@@ -138,6 +154,7 @@
 				E915B6381A168A1A00D1F435 /* Frameworks */,
 				E915B6391A168A1A00D1F435 /* Headers */,
 				E915B63A1A168A1A00D1F435 /* ShellScript */,
+				E94A226B1A17700E00189A85 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -302,7 +319,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-lRayne",
-					"-lopenal.1.15.1",
+					"-lopenal.1",
 					"-lrayne-openal",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -333,7 +350,7 @@
 				);
 				OTHER_LDFLAGS = (
 					"-lRayne",
-					"-lopenal.1.15.1",
+					"-lopenal.1",
 					"-lrayne-openal",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
