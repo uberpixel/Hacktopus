@@ -203,7 +203,6 @@ namespace HP
 	
 	void Enemy::kill()
 	{
-		_dead = true;
-		_active = false;
+		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(150), [&]{_dead = true; _active = false;}, false);
 	}
 }
