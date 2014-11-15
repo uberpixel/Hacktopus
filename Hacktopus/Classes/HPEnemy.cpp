@@ -19,7 +19,8 @@ namespace HP
 		AnimatableEntity(false),
 		_dead(false),
 		_active(true),
-		_qteItems(new RN::Array())
+		_qteItems(new RN::Array()),
+		_shock(nullptr)
 	{
 		SetDefaultTexture(RN::Texture::WithFile("Textures/Mensch1_walk+0.png"));
 		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
@@ -177,7 +178,20 @@ namespace HP
 		}
 		else
 		{
-			Rotate(RN::Vector3(0.0f, 0.0f, 300.0f*delta*((GetPosition().x > 0)?1.0f:-1.0f)));
+			if(!_shock)
+			{
+				_shock = new RN::Billboard(RN::Texture::WithFile("Textures/schock.png"), false);
+				_shock->SetSize(RN::Vector2(((GetPosition().x > 0)?-1.0f:1.0f)*GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
+				_shock->GetMaterial()->SetLighting(false);
+				_shock->GetMaterial()->SetCullMode(RN::Material::CullMode::None);
+				AddChild(_shock);
+				
+				RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(100), [this]{_shock->RemoveFromParent(); _shock->RemoveFromWorld(); _shock->Release();}, false);
+			}
+			
+			SetTexture(RN::Texture::WithFile("Textures/Mensch1_shock.png"));
+			SetSize(RN::Vector2(((GetPosition().x > 0)?-1.0f:1.0f)*GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
+			Rotate(RN::Vector3(0.0f, 0.0f, 200.0f*delta*((GetPosition().x > 0)?1.0f:-1.0f)));
 			Translate(RN::Vector3(delta*1000.0f*((GetPosition().x > 0)?1.0f:-1.0f), -500.0f*delta, 0.0f));
 			if(RN::Math::FastAbs(GetPosition().x) > 1100)
 			{

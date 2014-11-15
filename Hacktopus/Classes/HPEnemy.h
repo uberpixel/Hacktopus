@@ -40,6 +40,7 @@ namespace HP
 		
 		std::vector<int> _qte;
 		RN::Array *_qteItems;
+		RN::Billboard *_shock;
 		
 		RNDeclareMeta(Enemy)
 	};
