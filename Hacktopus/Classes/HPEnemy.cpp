@@ -121,7 +121,7 @@ namespace HP
 	{
 		AnimatableEntity::Update(delta);
 	
-		if(!_active)
+		if(!_active && !_dead)
 		{
 			_cooldown -= delta;
 			
