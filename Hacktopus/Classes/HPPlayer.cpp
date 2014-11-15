@@ -23,18 +23,28 @@ namespace HP
 		
 		_armRight = new AnimatableEntity();
 		_armRight->SetDefaultTexture(RN::Texture::WithFile("Textures/tentakelarm+0.png"));
-		_armRight->SetPosition(RN::Vector3(500.0f, 290.0f, -2000.0f));
+		_armRight->SetPosition(RN::Vector3(500.0f, 290.0f, -3000.0f));
 		_armRight->GetMaterial()->SetLighting(false);
 		_armRight->GetMaterial()->SetAmbientColor(RN::Color::White());
 		_armRight->GetMaterial()->SetDepthWrite(false);
 		
 		_armLeft = new AnimatableEntity(false);
 		_armLeft->SetDefaultTexture(RN::Texture::WithFile("Textures/tentakelarm+0.png"));
-		_armLeft->SetPosition(RN::Vector3(-470.0f, 310.0f, -2000.0f));
+		_armLeft->SetPosition(RN::Vector3(-470.0f, 310.0f, -3000.0f));
 		_armLeft->GetMaterial()->SetLighting(false);
 		_armLeft->GetMaterial()->SetAmbientColor(RN::Color::White());
 		_armLeft->GetMaterial()->SetDepthWrite(false);
 		_armLeft->GetMaterial()->SetCullMode(RN::Material::CullMode::None);
+		
+		for(int i = 0; i < 5; i++)
+		{
+			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
+		}
+		_lifes[0]->SetPosition(RN::Vector3(-893.0f, 202.0f, -7000.0f));
+		_lifes[1]->SetPosition(RN::Vector3(-815.0f, 202.0f, -7000.0f));
+		_lifes[2]->SetPosition(RN::Vector3(-737.0f, 202.0f, -7000.0f));
+		_lifes[3]->SetPosition(RN::Vector3(-655.0f, 202.0f, -7000.0f));
+		_lifes[4]->SetPosition(RN::Vector3(-575.0f, 202.0f, -7000.0f));
 	}
 	
 	Player::~Player()

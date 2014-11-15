@@ -26,6 +26,7 @@ namespace HP
 		
 	private:
 		RN::Billboard *_body;
+		RN::Billboard *_lifes[5];
 		
 		AnimatableEntity *_armRight;
 		AnimatableEntity *_armLeft;

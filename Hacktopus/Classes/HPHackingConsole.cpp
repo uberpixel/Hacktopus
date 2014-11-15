@@ -82,7 +82,19 @@ namespace HP
 			_shadow->SetNumberOfLines(0);
 			_shadow->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
 			
-			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, RN::Rect(333, 110, 750, 300));
+			RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
+			RN::Rect widgetRect(333, 110, 750, 300);
+			widgetRect.x /= 960.0f;
+			widgetRect.y /= 600.0f;
+			widgetRect.x -= 0.5f;
+			widgetRect.y -= 0.5f;
+			widgetRect.x *= resolution.x;
+			widgetRect.y *= resolution.y;
+			widgetRect.x += resolution.x/2.0f;
+			widgetRect.y += resolution.y/2.0f;
+			widgetRect.width *= resolution.x/960.0f;
+			widgetRect.height *= resolution.y/600.0f;
+			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, widgetRect);
 			_widget->GetContentView()->AddSubview(_shadow);
 			_widget->GetContentView()->AddSubview(_label);
 			_widget->GetContentView()->SetBackgroundColor(RN::UI::Color::ClearColor());

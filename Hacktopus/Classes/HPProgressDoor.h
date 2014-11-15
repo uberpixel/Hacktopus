@@ -13,7 +13,7 @@
 
 namespace HP
 {
-	class ProgressDoor : public RN::ISingleton<ProgressDoor>, public RN::Billboard
+	class ProgressDoor : public RN::ISingleton<ProgressDoor>
 	{
 	public:
 		ProgressDoor();
@@ -26,6 +26,8 @@ namespace HP
 		float _progress;
 		RN::Vector3 _position;
 		RN::Vector3 _offsetFactor;
+		RN::Billboard *_topDoor;
+		RN::Billboard *_bottomDoor;
 		
 		RNDeclareSingleton(ProgressDoor)
 	};

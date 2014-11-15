@@ -75,7 +75,12 @@ namespace HP
 		background->SetSize(RN::Vector2(1920.0f, 1200.0f));
 		background->GetMaterial()->SetLighting(false);
 		background->GetMaterial()->SetAmbientColor(RN::Color::White());
-		background->GetMaterial()->SetBlending(false);
+		
+		AnimatableEntity *miniScreen = new AnimatableEntity();
+		miniScreen->SetDefaultTexture(RN::Texture::WithFile("Textures/mini_screen+0.png"));
+		miniScreen->PlayAnimationFile("Animations/mini_screen1.json");
+		miniScreen->RepeateAnimation();
+		miniScreen->SetPosition(RN::Vector3(0.0f, 0.0f, -9000.0f));
 		
 		RN::Camera *uiCamera = RN::UI::Server::GetSharedInstance()->GetCamera();
 		uiCamera->SetFlags(uiCamera->GetFlags()|RN::Camera::Flags::NoFlush);
@@ -109,7 +114,7 @@ namespace HP
 		if(!_console->IsHacking())
 			return;
 		
-		ProgressDoor::GetSharedInstance()->Progress(-1.5 * delta);
+		ProgressDoor::GetSharedInstance()->Progress(-0.5 * delta);
 		
 		_time -= delta;
 		if(_time < 0.0f)
@@ -120,7 +125,8 @@ namespace HP
 				_time = _rng->GetRandomFloatRange(1.0f, 2.0f);
 			
 			Enemy *enemy = new Enemy();
-			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), _rng->GetRandomFloatRange(180.0f, 330.0f), -8000.0f));
+			float height = _rng->GetRandomFloatRange(180.0f, 330.0f);
+			enemy->SetPosition(RN::Vector3(1100.0f*((_rng->GetRandomInt32Range(0.0f, 2.0f) >= 1.0f)?-1.0f:1.0f), height, (height < 255)?-5000.0f:-2000.0f));
 			
 			if(_gamepad)
 				enemy->GenerateQTE();

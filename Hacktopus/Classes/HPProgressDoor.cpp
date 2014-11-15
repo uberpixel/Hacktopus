@@ -12,13 +12,18 @@ namespace HP
 {
 	RNDefineSingleton(ProgressDoor)
 	
-	ProgressDoor::ProgressDoor() : _progress(0.0f), _position(RN::Vector3(-400.0f, 0.0f, -9000.0f))
+	ProgressDoor::ProgressDoor() : _progress(0.0f), _position(RN::Vector3(-745.0f, -26.0f, -12000.0f))
 	{
-		SetTexture(RN::Texture::WithFile("Textures/enemy.png"), 1.0f);
-		SetPosition(_position);
-		GetMaterial()->SetLighting(false);
+		_topDoor = new RN::Billboard();
+		_topDoor->SetTexture(RN::Texture::WithFile("Textures/door2_400x360.png"), 1.0f);
+		_topDoor->SetPosition(_position);
+		_topDoor->GetMaterial()->SetLighting(false);
+		_bottomDoor = new RN::Billboard();
+		_bottomDoor->SetTexture(RN::Texture::WithFile("Textures/door1_400x360.png"), 1.0f);
+		_bottomDoor->SetPosition(_position);
+		_bottomDoor->GetMaterial()->SetLighting(false);
 		
-		_offsetFactor = RN::Vector3(GetSize(), 0.0f)/100.0f;
+		_offsetFactor = RN::Vector3(_topDoor->GetSize(), 0.0f)/200.0f;
 		_offsetFactor.y *= -1.0f;
 	}
 	
@@ -35,6 +40,7 @@ namespace HP
 			_progress = 0.0f;
 		}
 		
-		SetPosition(_position+_offsetFactor*_progress);
+		_topDoor->SetPosition(_position+_offsetFactor*_progress);
+		_bottomDoor->SetPosition(_position-_offsetFactor*_progress);
 	}
 }
