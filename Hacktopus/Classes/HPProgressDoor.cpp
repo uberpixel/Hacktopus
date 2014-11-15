@@ -40,7 +40,17 @@ namespace HP
 			_progress = 0.0f;
 		}
 		
-		_topDoor->SetPosition(_position+_offsetFactor*_progress);
-		_bottomDoor->SetPosition(_position-_offsetFactor*_progress);
+		RN::Vector3 topPosition = _position+_offsetFactor*_progress;
+		topPosition.x = roundf(topPosition.x);
+		topPosition.y = roundf(topPosition.y);
+		topPosition.z = roundf(topPosition.z);
+		
+		RN::Vector3 bottomPosition = _position-_offsetFactor*_progress;
+		bottomPosition.x = roundf(bottomPosition.x);
+		bottomPosition.y = roundf(bottomPosition.y);
+		bottomPosition.z = roundf(bottomPosition.z);
+		
+		_topDoor->SetPosition(topPosition);
+		_bottomDoor->SetPosition(bottomPosition);
 	}
 }
