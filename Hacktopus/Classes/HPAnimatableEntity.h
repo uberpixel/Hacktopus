@@ -25,6 +25,7 @@ namespace HP
 		void Update(float delta) override;
 		void PlayAnimation(const std::string &name, float duration = 0.1);
 		void PlayAnimationFile(const std::string &name);
+		bool IsPlaying(){return (_frames != nullptr);}
 		
 	private:
 		RN::Texture *AttemptToLoad(const std::string &name, size_t index);

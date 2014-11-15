@@ -278,6 +278,8 @@ namespace HP
 		if(event->GetType() != RN::Event::Type::KeyDown)
 			return;
 		
+		Player::GetSharedInstance()->KeepTyping();
+		
 		RN::UniChar character = event->GetCharacter();
 		
 		if(!_hacking)

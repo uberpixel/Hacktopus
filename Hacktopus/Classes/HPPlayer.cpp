@@ -15,9 +15,8 @@ namespace HP
 	
 	Player::Player() : _numberOfLifes(4)
 	{
-		_body = new AnimatableEntity(RN::Texture::WithFile("Textures/hektor.png"));
-		_body->PlayAnimationFile("Animations/hektor_type1.json");
-		_body->RepeateAnimation();
+		_body = new AnimatableEntity();
+		_body->SetDefaultTexture(RN::Texture::WithFile("Textures/hektor2.png"));
 		_body->SetPosition(RN::Vector3(0.0f, 300.0f, -4000.0f));
 		_body->GetMaterial()->SetLighting(false);
 		_body->GetMaterial()->SetAmbientColor(RN::Color::White());
@@ -62,6 +61,12 @@ namespace HP
 		
 		_lifes[_numberOfLifes]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
 		_numberOfLifes -= 1;
+	}
+	
+	void Player::KeepTyping()
+	{
+		if(!_body->IsPlaying())
+			_body->PlayAnimationFile("Animations/hektor_type1.json");
 	}
 	
 	void Player::Attack(Enemy *target)

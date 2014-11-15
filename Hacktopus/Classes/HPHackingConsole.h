@@ -11,6 +11,7 @@
 
 #include <Rayne/Rayne.h>
 #include "HPProgressDoor.h"
+#include "HPPlayer.h"
 
 namespace HP
 {

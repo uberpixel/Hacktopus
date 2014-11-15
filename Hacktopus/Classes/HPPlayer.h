@@ -24,6 +24,7 @@ namespace HP
 		
 		void Attack(Enemy *target);
 		void RemoveLife();
+		void KeepTyping();
 		
 	private:
 		AnimatableEntity *_body;
