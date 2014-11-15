@@ -7,6 +7,7 @@
 //
 
 #include "HPEnemy.h"
+#include "HPPlayer.h"
 
 namespace HP
 {
@@ -34,6 +35,21 @@ namespace HP
 		if(RN::Math::FastAbs(GetPosition().x) < 100)
 		{
 			RemoveFromWorld();
+		}
+		
+		RN::Input *input = RN::Input::GetSharedInstance();
+		
+		float xblubb = RN::Math::FastAbs(input->GetMousePosition().x*2.0f-960-GetPosition().x);
+		float yblubb = RN::Math::FastAbs(input->GetMousePosition().y*2.0f-600-GetPosition().y);
+		if(xblubb < RN::Math::FastAbs(GetSize().x*0.5f))
+		{
+			if(yblubb < RN::Math::FastAbs(GetSize().y*0.5f))
+			{
+				if(input->IsMousePressed(0))
+				{
+					Player::GetSharedInstance()->Attack(this);
+				}
+			}
 		}
 	}
 }
