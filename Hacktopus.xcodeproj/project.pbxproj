@@ -290,10 +290,7 @@
 					"$(inherited)",
 					/usr/local/lib/,
 				);
-				OTHER_LDFLAGS = (
-					"-lRayne",
-					"-lsqlite3",
-				);
+				OTHER_LDFLAGS = "-lRayne";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -318,10 +315,7 @@
 					"$(inherited)",
 					/usr/local/lib/,
 				);
-				OTHER_LDFLAGS = (
-					"-lRayne",
-					"-lsqlite3",
-				);
+				OTHER_LDFLAGS = "-lRayne";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

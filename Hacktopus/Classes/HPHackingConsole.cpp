@@ -14,15 +14,18 @@ namespace HP
 		_active(false),
 		_word(nullptr),
 		_widget(nullptr),
-		_generator(new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister))
+		_generator(new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister)),
+		_wordlistIndex(0)
 	{
-		std::string path = RN::FileManager::GetSharedInstance()->GetFilePathWithName("Words/words.sqlite");
-		sqlite3_open(path.c_str(), &_connection);
+		_wordlist = RN::JSONSerialization::JSONObjectFromData<RN::Array>(RN::Data::WithContentsOfFile("Words/words.json"));
+		_wordlist->Retain();
 		
 		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18)->Retain();
 		_textColor = RN::UI::Color::WithRGB(0.055, 1, 0)->Retain();
 		_shadowColor = RN::UI::Color::WithRGBA(0.047, 0.588, 0, 0.2)->Retain();
 		_text = new RN::String();
+		
+		ShuffleWords();
 		
 		RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
 			
@@ -30,6 +33,28 @@ namespace HP
 			TakeInput(event);
 			
 		}, this);
+	}
+	
+	void HackingConsole::ShuffleWords()
+	{
+		// Brain dead Fisher-Yates shuffle... From memory
+		
+		RN::Random::MersenneTwister random;
+		
+		int32 count = static_cast<int32>(_wordlist->GetCount());
+		for(int32 i = count - 1; i >= 0; i --)
+		{
+			size_t index = random.GetRandomInt32Range(0, i + 1);
+			
+			RN::Object *a = _wordlist->GetObjectAtIndex(index)->Retain();
+			RN::Object *b = _wordlist->GetObjectAtIndex(i)->Retain();
+			
+			_wordlist->ReplaceObjectAtIndex(index, b);
+			_wordlist->ReplaceObjectAtIndex(i, a);
+			
+			a->Release();
+			b->Release();
+		}
 	}
 	
 	void HackingConsole::Activate()
@@ -119,23 +144,6 @@ namespace HP
 		UpdateLabels();
 	}
 	
-	
-	std::string HackingConsole::RunQuery(const std::string &query) const
-	{
-		sqlite3_stmt *_statement;
-		sqlite3_prepare_v2(_connection, query.c_str(), static_cast<int>(query.length()), &_statement, nullptr);
-		
-		std::string result;
-		
-		if(sqlite3_step(_statement) == SQLITE_ROW)
-		{
-			result = std::string(reinterpret_cast<const char *>(sqlite3_column_text(_statement, 0)));
-		}
-		
-		sqlite3_finalize(_statement);
-		return result;
-	}
-	
 	void HackingConsole::UpdateCharacter()
 	{
 		_character = _word->GetCharacterAtIndex(_index);
@@ -143,18 +151,11 @@ namespace HP
 	
 	void HackingConsole::PickWord()
 	{
-		RN::SafeRelease(_word);
-		
-		std::stringstream query;
-		query << "SELECT lemma FROM words LIMIT 1 OFFSET ";
-		query << _generator->GetRandomInt32Range(0, 207235);
-		
-		std::string result = RunQuery(query.str());
-		
-		_word  = new RN::String(result.c_str());
+		_word = _wordlist->GetObjectAtIndex<RN::String>(_wordlistIndex);
 		_index = 0;
-		
 		_wasLastCorrect = true;
+		
+		_wordlistIndex = (_wordlistIndex + 1) % _wordlist->GetCount();
 		
 		UpdateCharacter();
 		PrintCommand(RNCSTR(""));

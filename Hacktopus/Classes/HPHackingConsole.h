@@ -10,7 +10,6 @@
 #define __Hacktopus__HPWordProcessor__
 
 #include <Rayne/Rayne.h>
-#include <sqlite3.h>
 
 namespace HP
 {
@@ -22,11 +21,12 @@ namespace HP
 		void Activate();
 		
 	private:
+		void ShuffleWords();
+		
 		void UpdateLabels();
 		void PrintCommand(RN::String *command);
 		void PushInput(UniChar character);
 		
-		std::string RunQuery(const std::string &query) const;
 		void PickWord();
 		void TakeInput(RN::Event *event);
 		void UpdateCharacter();
@@ -46,7 +46,8 @@ namespace HP
 		RN::UniChar _character;
 		size_t _index;
 		
-		sqlite3 *_connection;
+		RN::Array *_wordlist;
+		size_t _wordlistIndex;
 		
 		RN::UI::Widget *_widget;
 		
