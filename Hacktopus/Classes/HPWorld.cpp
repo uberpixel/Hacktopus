@@ -51,7 +51,11 @@ namespace HP
 		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 		float aspect = resolution.y/resolution.x;
 		float frustomHeight = 1920*aspect;
-		_camera->SetOrthogonalFrustum(-frustomHeight*0.5f, frustomHeight*0.5f, -960.0f, 960.0f);
+		_orthogonalSize.x = -frustomHeight*0.5f;
+		_orthogonalSize.y = frustomHeight*0.5f;
+		_orthogonalSize.z = -960.0f;
+		_orthogonalSize.w = 960.0f;
+		_camera->SetOrthogonalFrustum(_orthogonalSize.x, _orthogonalSize.y, _orthogonalSize.z, _orthogonalSize.w);
 		_camera->SetClearColor(RN::Color::Black());
 		_camera->SetClipFar(20000);
 		
@@ -176,23 +180,18 @@ namespace HP
 			}
 		}
 		
-		
-		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
-		float aspect = resolution.y/resolution.x;
-		float frustomHeight = 1920*aspect;
-		
 		_shakeTime -= delta;
 		if(_shakeTime > 0)
 		{
 			float shake = _rng->GetRandomFloatRange(1.0-_shakeStrength, 1.0f);
-			_camera->SetOrthogonalFrustum(-frustomHeight*0.5f*shake, frustomHeight*0.5f*shake, -960.0f*shake, 960.0f*shake);
+			_camera->SetOrthogonalFrustum(_orthogonalSize.x*shake, _orthogonalSize.y*shake, _orthogonalSize.z*shake, _orthogonalSize.w*shake);
 			
 			if(_gamepad)
 				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(255));
 		}
 		else
 		{
-			_camera->SetOrthogonalFrustum(-frustomHeight*0.5f, frustomHeight*0.5f, -960.0f, 960.0f);
+			_camera->SetOrthogonalFrustum(_orthogonalSize.x, _orthogonalSize.y, _orthogonalSize.z, _orthogonalSize.w);
 			
 			if(_gamepad)
 				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(0));

@@ -29,11 +29,13 @@ namespace HP
 		void FinishLoading(RN::Deserializer *deserializer) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
+		RN::Vector4 GetOrthogonalSize() {return _orthogonalSize;}
 		
 	private:
 		RN::Array *_enemies;
 		
 		RN::Camera *_camera;
+		RN::Vector4 _orthogonalSize;
 		HackingConsole *_console;
 		RN::RandomNumberGenerator *_rng;
 		float _time;
