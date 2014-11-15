@@ -13,7 +13,7 @@ namespace HP
 {
 	RNDefineSingleton(Player)
 	
-	Player::Player()
+	Player::Player() : _numberOfLifes(4)
 	{
 		_body = new RN::Billboard(RN::Texture::WithFile("Textures/hektor.png"));
 		_body->SetPosition(RN::Vector3(0.0f, 300.0f, -4000.0f));
@@ -39,17 +39,27 @@ namespace HP
 		for(int i = 0; i < 5; i++)
 		{
 			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
+			_lifes[i]->GetMaterial()->SetLighting(false);
 		}
-		_lifes[0]->SetPosition(RN::Vector3(-893.0f, 202.0f, -7000.0f));
-		_lifes[1]->SetPosition(RN::Vector3(-815.0f, 202.0f, -7000.0f));
-		_lifes[2]->SetPosition(RN::Vector3(-737.0f, 202.0f, -7000.0f));
-		_lifes[3]->SetPosition(RN::Vector3(-655.0f, 202.0f, -7000.0f));
-		_lifes[4]->SetPosition(RN::Vector3(-575.0f, 202.0f, -7000.0f));
+		_lifes[0]->SetPosition(RN::Vector3(-893.0f, 202.0f, -8000.0f));
+		_lifes[1]->SetPosition(RN::Vector3(-815.0f, 202.0f, -8000.0f));
+		_lifes[2]->SetPosition(RN::Vector3(-737.0f, 202.0f, -8000.0f));
+		_lifes[3]->SetPosition(RN::Vector3(-655.0f, 202.0f, -8000.0f));
+		_lifes[4]->SetPosition(RN::Vector3(-575.0f, 202.0f, -8000.0f));
 	}
 	
 	Player::~Player()
 	{
 		
+	}
+	
+	void Player::RemoveLife()
+	{
+		if(_numberOfLifes < 0)
+			return;
+		
+		_lifes[_numberOfLifes]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
+		_numberOfLifes -= 1;
 	}
 	
 	void Player::Attack(Enemy *target)

@@ -23,10 +23,12 @@ namespace HP
 		~Player();
 		
 		void Attack(Enemy *target);
+		void RemoveLife();
 		
 	private:
 		RN::Billboard *_body;
 		RN::Billboard *_lifes[5];
+		int _numberOfLifes;
 		
 		AnimatableEntity *_armRight;
 		AnimatableEntity *_armLeft;

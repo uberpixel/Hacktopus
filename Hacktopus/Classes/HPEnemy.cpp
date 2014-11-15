@@ -127,10 +127,10 @@ namespace HP
 			
 			if(_cooldown <= 0.5 && !_damagedDone)
 			{
-				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
 				World::GetActiveWorld()->Downcast<World>()->Screenshake();
 				
 				_damagedDone = true;
+				Player::GetSharedInstance()->RemoveLife();
 			}
 			
 			if(_cooldown <= 0)
