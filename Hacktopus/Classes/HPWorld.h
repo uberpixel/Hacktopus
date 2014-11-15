@@ -10,7 +10,7 @@
 #define __HP_WORLD_H__
 
 #include <Rayne/Rayne.h>
-
+#include "HPHackingConsole.h"
 #include "HPEnemy.h"
 
 namespace HP
@@ -23,9 +23,12 @@ namespace HP
 		
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void Update(float delta) override;
+		void FinishLoading(RN::Deserializer *deserializer) override;
+		
 		
 	private:
 		RN::Camera *_camera;
+		HackingConsole *_console;
 	};
 }
 

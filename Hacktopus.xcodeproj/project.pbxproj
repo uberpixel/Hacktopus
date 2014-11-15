@@ -15,6 +15,8 @@
 		E934C3981A168A6A00742985 /* HPApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3941A168A6A00742985 /* HPApplication.h */; };
 		E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3951A168A6A00742985 /* HPWorld.cpp */; };
 		E934C39A1A168A6A00742985 /* HPWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3961A168A6A00742985 /* HPWorld.h */; };
+		E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */; };
+		E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		E934C3951A168A6A00742985 /* HPWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPWorld.cpp; path = Classes/HPWorld.cpp; sourceTree = "<group>"; };
 		E934C3961A168A6A00742985 /* HPWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPWorld.h; path = Classes/HPWorld.h; sourceTree = "<group>"; };
 		E934C39B1A168A7500742985 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Hacktopus/Resources; sourceTree = "<group>"; };
+		E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPHackingConsole.cpp; path = Classes/HPHackingConsole.cpp; sourceTree = "<group>"; };
+		E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPHackingConsole.h; path = Classes/HPHackingConsole.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 				E934C3941A168A6A00742985 /* HPApplication.h */,
 				E934C3951A168A6A00742985 /* HPWorld.cpp */,
 				E934C3961A168A6A00742985 /* HPWorld.h */,
+				E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */,
+				E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */,
 				D5D1E7D01A16907400107ED8 /* HPEnemy.cpp */,
 				D5D1E7D11A16907400107ED8 /* HPEnemy.h */,
 			);
@@ -94,6 +100,7 @@
 			files = (
 				E934C39A1A168A6A00742985 /* HPWorld.h in Headers */,
 				D5D1E7D31A16907400107ED8 /* HPEnemy.h in Headers */,
+				E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */,
 				E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */,
 				E934C3981A168A6A00742985 /* HPApplication.h in Headers */,
 			);
@@ -176,6 +183,7 @@
 				E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */,
 				D5D1E7D21A16907400107ED8 /* HPEnemy.cpp in Sources */,
 				E915B6481A168A1A00D1F435 /* main.cpp in Sources */,
+				E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +274,10 @@
 					"$(inherited)",
 					/usr/local/lib/,
 				);
-				OTHER_LDFLAGS = "-lRayne";
+				OTHER_LDFLAGS = (
+					"-lRayne",
+					"-lsqlite3",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -291,7 +302,10 @@
 					"$(inherited)",
 					/usr/local/lib/,
 				);
-				OTHER_LDFLAGS = "-lRayne";
+				OTHER_LDFLAGS = (
+					"-lRayne",
+					"-lsqlite3",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

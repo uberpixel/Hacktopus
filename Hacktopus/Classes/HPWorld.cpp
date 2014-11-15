@@ -33,6 +33,12 @@ namespace HP
 		enemy->SetPosition(RN::Vector3(200.0f, 500.0f, -80.0f));
 	}
 
+	void World::FinishLoading(RN::Deserializer *deserializer)
+	{
+		_console = new HackingConsole();
+		_console->Activate();
+	}
+	
 	void World::Update(float delta)
 	{
 		// Do something...
