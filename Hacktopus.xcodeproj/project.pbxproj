@@ -19,6 +19,8 @@
 		E934C39A1A168A6A00742985 /* HPWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3961A168A6A00742985 /* HPWorld.h */; };
 		E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */; };
 		E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */; };
+		E9BFB69F1A16E9DA0008044D /* HPAnimatableEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */; };
+		E9BFB6A01A16E9DA0008044D /* HPAnimatableEntity.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB69E1A16E9DA0008044D /* HPAnimatableEntity.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		E934C39B1A168A7500742985 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Hacktopus/Resources; sourceTree = "<group>"; };
 		E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPHackingConsole.cpp; path = Classes/HPHackingConsole.cpp; sourceTree = "<group>"; };
 		E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPHackingConsole.h; path = Classes/HPHackingConsole.h; sourceTree = "<group>"; };
+		E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPAnimatableEntity.cpp; path = Classes/HPAnimatableEntity.cpp; sourceTree = "<group>"; };
+		E9BFB69E1A16E9DA0008044D /* HPAnimatableEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPAnimatableEntity.h; path = Classes/HPAnimatableEntity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 				D5D1E7D11A16907400107ED8 /* HPEnemy.h */,
 				D5D1E7D41A16D83200107ED8 /* HPPlayer.cpp */,
 				D5D1E7D51A16D83200107ED8 /* HPPlayer.h */,
+				E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */,
+				E9BFB69E1A16E9DA0008044D /* HPAnimatableEntity.h */,
 			);
 			name = Classes;
 			path = Hacktopus;
@@ -108,6 +114,7 @@
 				D5D1E7D71A16D83200107ED8 /* HPPlayer.h in Headers */,
 				D5D1E7D31A16907400107ED8 /* HPEnemy.h in Headers */,
 				E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */,
+				E9BFB6A01A16E9DA0008044D /* HPAnimatableEntity.h in Headers */,
 				E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */,
 				E934C3981A168A6A00742985 /* HPApplication.h in Headers */,
 			);
@@ -188,6 +195,7 @@
 			files = (
 				E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */,
 				E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */,
+				E9BFB69F1A16E9DA0008044D /* HPAnimatableEntity.cpp in Sources */,
 				D5D1E7D61A16D83200107ED8 /* HPPlayer.cpp in Sources */,
 				D5D1E7D21A16907400107ED8 /* HPEnemy.cpp in Sources */,
 				E915B6481A168A1A00D1F435 /* main.cpp in Sources */,

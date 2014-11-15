@@ -10,6 +10,7 @@
 #define __Hacktopus__HPPlayer__
 
 #include <Rayne/Rayne.h>
+#include "HPAnimatableEntity.h"
 
 namespace HP
 {
@@ -23,8 +24,9 @@ namespace HP
 		
 	private:
 		RN::Billboard *_body;
-		RN::Billboard *_armRight;
-		RN::Billboard *_armLeft;
+		
+		AnimatableEntity *_armRight;
+		AnimatableEntity *_armLeft;
 		
 		RNDeclareSingleton(Player)
 	};
