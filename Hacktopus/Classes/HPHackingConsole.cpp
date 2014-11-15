@@ -91,7 +91,7 @@ namespace HP
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));
 			PrintCommand(RNCSTR("cd /sbin/iggj7/"));
 			PrintCommand(RNCSTR("./masterhack"));
-			PrintCommand(RNCSTR("Please select: [n]ew game, [e]xit"));
+			PrintCommand(RNCSTR("Select: [n]ew game, [h]elp, [e]xit"));
 		}
 		
 		_active  = true;
@@ -114,6 +114,12 @@ namespace HP
 		if(_input->IsEqual(RNCSTR("n")))
 		{
 			StartHacking();
+		}
+		else if(_input->IsEqual(RNCSTR("h")) || _input->IsEqual(RNCSTR("help")))
+		{
+			PrintOutput(RNCSTR("Hack the mainframe by typing the"));
+			PrintOutput(RNCSTR("hacker commands. Slap the pesky"));
+			PrintCommand(RNCSTR("scientists before they get to you"));
 		}
 		else if(_input->IsEqual(RNCSTR("e")))
 		{
