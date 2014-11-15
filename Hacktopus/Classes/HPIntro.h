@@ -22,7 +22,9 @@ namespace HP
 		void Play(RN::Function &&f);
 		
 	private:
+		RN::Texture *GetIntroImageWithID(size_t index);
 		void StepForward();
+		
 		int _state;
 		RN::Function _callback;
 		RN::UI::ImageView *_imageView;

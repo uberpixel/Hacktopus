@@ -18,6 +18,7 @@ namespace HP
 		_pressed(0)
 	{
 		_rng = new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister);
+		_inIntro = true;
 		
 		_audioWorld = new RN::openal::AudioWorld();
 		AddAttachment(_audioWorld);
@@ -47,7 +48,16 @@ namespace HP
 	
 	void World::LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer)
 	{
+		RN::openal::AudioListener *audioListener = new RN::openal::AudioListener();
+		
 		_camera = new RN::Camera(RN::Vector2(), RN::Texture::Format::RGB16F, (RN::Camera::Flags::Defaults | RN::Camera::Flags::Orthogonal) & ~RN::Camera::Flags::UseFog);
+		_camera->AddAttachment(audioListener);
+	}
+	
+	void World::LeftFromIntro()
+	{
+		_inIntro = false;
+		
 		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 		float aspect = resolution.y/resolution.x;
 		float frustomHeight = 1920*aspect;
@@ -58,9 +68,6 @@ namespace HP
 		_camera->SetOrthogonalFrustum(_orthogonalSize.x, _orthogonalSize.y, _orthogonalSize.z, _orthogonalSize.w);
 		_camera->SetClearColor(RN::Color::Black());
 		_camera->SetClipFar(20000);
-		
-		RN::openal::AudioListener *audioListener = new RN::openal::AudioListener();
-		_camera->AddAttachment(audioListener);
 		
 		RN::Billboard *background = new RN::Billboard();
 		background->SetTexture(RN::Texture::WithFile("Textures/background.png"), 1.0f);
@@ -83,10 +90,7 @@ namespace HP
 		
 		Player::GetSharedInstance();
 		ProgressDoor::GetSharedInstance();
-	}
-
-	void World::FinishLoading(RN::Deserializer *deserializer)
-	{
+		
 		_console = new HackingConsole();
 		_console->Activate();
 	}
@@ -99,6 +103,9 @@ namespace HP
 	
 	void World::Update(float delta)
 	{
+		if(_inIntro)
+			return;
+		
 		if(!_console->IsHacking())
 			return;
 		

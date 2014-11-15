@@ -24,14 +24,16 @@ namespace HP
 		World();
 		~World() override;
 		
+		void LeftFromIntro();
+		
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void Update(float delta) override;
-		void FinishLoading(RN::Deserializer *deserializer) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
 		RN::Vector4 GetOrthogonalSize() {return _orthogonalSize;}
 		
 	private:
+		bool _inIntro;
 		RN::Array *_enemies;
 		
 		RN::Camera *_camera;
