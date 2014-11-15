@@ -127,7 +127,7 @@ namespace HP
 			
 			if(_cooldown <= 0.5 && !_damagedDone)
 			{
-				World::GetActiveWorld()->Downcast<World>()->Screenshake();
+				World::GetActiveWorld()->Downcast<World>()->Screenshake(0.15, 0.1);
 				
 				_damagedDone = true;
 				Player::GetSharedInstance()->RemoveLife();
