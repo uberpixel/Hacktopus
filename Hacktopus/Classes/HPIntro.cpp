@@ -38,9 +38,23 @@ namespace HP
 	void Intro::Play(RN::Function &&f)
 	{
 		_callback = std::move(f);
+		_stopped = false;
 		
 		StepForward();
 		Open();
+		
+		RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
+			
+			RN::Kernel::GetSharedInstance()->ScheduleFunction([this] {
+				
+				_callback();
+				_stopped = true;
+				
+				Close();
+				RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
+				
+			});
+		}, this);
 	}
 	
 	RN::Texture *Intro::GetIntroImageWithID(size_t index)
@@ -53,6 +67,9 @@ namespace HP
 	
 	void Intro::StepForward()
 	{
+		if(_stopped)
+			return;
+		
 		_state ++;
 		
 		if(_state >= 14)
@@ -60,6 +77,7 @@ namespace HP
 			Close();
 			_callback();
 			
+			RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
 			return;
 		}
 		

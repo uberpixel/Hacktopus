@@ -120,6 +120,27 @@ namespace HP
 	void Enemy::Update(float delta)
 	{
 		AnimatableEntity::Update(delta);
+	
+		if(!_active)
+		{
+			_cooldown -= delta;
+			
+			if(_cooldown <= 0.5 && !_damagedDone)
+			{
+				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
+				World::GetActiveWorld()->Downcast<World>()->Screenshake();
+				
+				_damagedDone = true;
+			}
+			
+			if(_cooldown <= 0)
+			{
+				RemoveFromWorld();
+			}
+			
+			
+			return;
+		}
 		
 		if(!_dead)
 		{
@@ -145,12 +166,13 @@ namespace HP
 				}
 			}
 			
-			if(RN::Math::FastAbs(GetPosition().x) < 100)
+			if(RN::Math::FastAbs(GetPosition().x) < 200)
 			{
-				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
-				World::GetActiveWorld()->Downcast<World>()->Screenshake();
-				RemoveFromWorld();
 				_active = false;
+				_cooldown = 1.0;
+				_damagedDone = false;
+				
+				PlayAnimation("Textures/Mensch1_attack", 0.2);
 			}
 		}
 		else

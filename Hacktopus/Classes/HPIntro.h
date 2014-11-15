@@ -25,6 +25,8 @@ namespace HP
 		RN::Texture *GetIntroImageWithID(size_t index);
 		void StepForward();
 		
+		bool _stopped;
+		
 		int _state;
 		RN::Function _callback;
 		RN::UI::ImageView *_imageView;

@@ -34,6 +34,9 @@ namespace HP
 		
 		bool _dead;
 		bool _active;
+		bool _damagedDone;
+		
+		float _cooldown;
 		
 		std::vector<int> _qte;
 		RN::Array *_qteItems;
