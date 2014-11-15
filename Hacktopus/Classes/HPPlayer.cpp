@@ -57,7 +57,10 @@ namespace HP
 	void Player::RemoveLife()
 	{
 		if(_numberOfLifes < 0)
+		{
+			World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);
 			return;
+		}
 		
 		_lifes[_numberOfLifes]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
 		_numberOfLifes -= 1;

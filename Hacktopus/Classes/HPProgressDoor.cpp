@@ -7,12 +7,13 @@
 //
 
 #include "HPProgressDoor.h"
+#include "HPWorld.h"
 
 namespace HP
 {
 	RNDefineSingleton(ProgressDoor)
 	
-	ProgressDoor::ProgressDoor() : _progress(0.0f), _position(RN::Vector3(-745.0f, -26.0f, -12000.0f))
+	ProgressDoor::ProgressDoor() : _progress(0.0f), _position(RN::Vector3(-745.0f, -26.0f, -12000.0f)), _isOpened(false)
 	{
 		_topDoor = new RN::Billboard();
 		_topDoor->SetTexture(RN::Texture::WithFile("Textures/door2_400x360.png"), 1.0f);
@@ -32,12 +33,27 @@ namespace HP
 		
 	}
 	
+	void ProgressDoor::Reset()
+	{
+		_isOpened = false;
+		Progress(-_progress);
+	}
+	
 	void ProgressDoor::Progress(float progress)
 	{
+		if(_isOpened)
+			return;
+		
 		_progress += progress;
 		if(_progress < 0.0f)
 		{
 			_progress = 0.0f;
+		}
+		
+		if(_progress >= 100.0f)
+		{
+			_isOpened = true;
+			World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);
 		}
 		
 		RN::Vector3 topPosition = _position+_offsetFactor*_progress;

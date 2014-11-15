@@ -7,6 +7,7 @@
 //
 
 #include "HPHackingConsole.h"
+#include "HPWorld.h"
 
 namespace HP
 {
@@ -272,6 +273,12 @@ namespace HP
 	
 	void HackingConsole::TakeInput(RN::Event *event)
 	{
+		if(World::GetActiveWorld()->Downcast<World>()->IsInIntro())
+		{
+			_hacking = false;
+			return;
+		}
+		
 		if(!_active)
 			return;
 		

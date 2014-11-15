@@ -21,9 +21,11 @@ namespace HP
 		
 		void Progress(float progress);
 		float GetProgress() const { return _progress; }
+		void Reset();
 		
 	private:
 		float _progress;
+		bool _isOpened;
 		RN::Vector3 _position;
 		RN::Vector3 _offsetFactor;
 		RN::Billboard *_topDoor;

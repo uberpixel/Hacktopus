@@ -15,6 +15,8 @@
 		D5D1E7DB1A1756C400107ED8 /* HPProgressDoor.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D1E7D91A1756C400107ED8 /* HPProgressDoor.h */; };
 		D5D1E7DE1A1783D600107ED8 /* HPIntro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5D1E7DC1A1783D600107ED8 /* HPIntro.cpp */; };
 		D5D1E7DF1A1783D600107ED8 /* HPIntro.h in Headers */ = {isa = PBXBuildFile; fileRef = D5D1E7DD1A1783D600107ED8 /* HPIntro.h */; };
+		D5F8BD501A180A9B005F889F /* HPOutro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5F8BD4E1A180A9B005F889F /* HPOutro.cpp */; };
+		D5F8BD511A180A9B005F889F /* HPOutro.h in Headers */ = {isa = PBXBuildFile; fileRef = D5F8BD4F1A180A9B005F889F /* HPOutro.h */; };
 		E915B6481A168A1A00D1F435 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E915B6471A168A1A00D1F435 /* main.cpp */; };
 		E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = E915B64A1A168A1A00D1F435 /* Hacktopus-Prefix.pch */; };
 		E934C3971A168A6A00742985 /* HPApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3931A168A6A00742985 /* HPApplication.cpp */; };
@@ -50,6 +52,8 @@
 		D5D1E7D91A1756C400107ED8 /* HPProgressDoor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPProgressDoor.h; path = Classes/HPProgressDoor.h; sourceTree = "<group>"; };
 		D5D1E7DC1A1783D600107ED8 /* HPIntro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPIntro.cpp; path = Classes/HPIntro.cpp; sourceTree = "<group>"; };
 		D5D1E7DD1A1783D600107ED8 /* HPIntro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPIntro.h; path = Classes/HPIntro.h; sourceTree = "<group>"; };
+		D5F8BD4E1A180A9B005F889F /* HPOutro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HPOutro.cpp; path = Classes/HPOutro.cpp; sourceTree = "<group>"; };
+		D5F8BD4F1A180A9B005F889F /* HPOutro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HPOutro.h; path = Classes/HPOutro.h; sourceTree = "<group>"; };
 		E915B63C1A168A1A00D1F435 /* Hacktopus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hacktopus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E915B6471A168A1A00D1F435 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = "Supporting files/main.cpp"; sourceTree = "<group>"; };
 		E915B6491A168A1A00D1F435 /* Hacktopus-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Hacktopus-Info.plist"; path = "Supporting files/Hacktopus-Info.plist"; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				D5D1E7D91A1756C400107ED8 /* HPProgressDoor.h */,
 				D5D1E7DC1A1783D600107ED8 /* HPIntro.cpp */,
 				D5D1E7DD1A1783D600107ED8 /* HPIntro.h */,
+				D5F8BD4E1A180A9B005F889F /* HPOutro.cpp */,
+				D5F8BD4F1A180A9B005F889F /* HPOutro.h */,
 			);
 			name = Classes;
 			path = Hacktopus;
@@ -142,6 +148,7 @@
 				D5D1E7D71A16D83200107ED8 /* HPPlayer.h in Headers */,
 				D5D1E7D31A16907400107ED8 /* HPEnemy.h in Headers */,
 				E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */,
+				D5F8BD511A180A9B005F889F /* HPOutro.h in Headers */,
 				E9BFB6A01A16E9DA0008044D /* HPAnimatableEntity.h in Headers */,
 				E915B64B1A168A1A00D1F435 /* Hacktopus-Prefix.pch in Headers */,
 				D5D1E7DF1A1783D600107ED8 /* HPIntro.h in Headers */,
@@ -229,6 +236,7 @@
 				E9BFB69F1A16E9DA0008044D /* HPAnimatableEntity.cpp in Sources */,
 				D5D1E7D61A16D83200107ED8 /* HPPlayer.cpp in Sources */,
 				D5D1E7DA1A1756C400107ED8 /* HPProgressDoor.cpp in Sources */,
+				D5F8BD501A180A9B005F889F /* HPOutro.cpp in Sources */,
 				D5D1E7D21A16907400107ED8 /* HPEnemy.cpp in Sources */,
 				E915B6481A168A1A00D1F435 /* main.cpp in Sources */,
 				E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */,

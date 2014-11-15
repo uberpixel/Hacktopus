@@ -122,6 +122,13 @@ namespace HP
 	void Enemy::Update(float delta)
 	{
 		AnimatableEntity::Update(delta);
+		
+		if(World::GetActiveWorld()->Downcast<World>()->IsInIntro())
+		{
+			RemoveFromWorld();
+			_active = false;
+			return;
+		}
 	
 		if(!_active && !_dead)
 		{

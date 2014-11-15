@@ -1,31 +1,29 @@
 //
-//  HPIntro.h
+//  HPOutro.h
 //  Hacktopus
 //
 //  Created by Nils Daumann on 15.11.14.
 //  Copyright (c) 2014 Überpixel. All rights reserved.
 //
 
-#ifndef __Hacktopus__HPIntro__
-#define __Hacktopus__HPIntro__
+#ifndef __Hacktopus__HPOutro__
+#define __Hacktopus__HPOutro__
 
 #include <Rayne/Rayne.h>
 
 namespace HP
 {
-	class Intro : public RN::UI::Widget
+	class Outro : public RN::UI::Widget
 	{
 	public:
-		Intro();
-		~Intro();
+		Outro();
+		~Outro();
 
-		void Play(RN::Function &&f);
+		void Play(RN::Function &&f, bool win);
 		
 	private:
-		RN::Texture *GetIntroImageWithID(size_t index);
+		RN::Texture *GetOutroImageWithID(size_t index);
 		void StepForward();
-		
-		bool _stopped;
 		
 		int _state;
 		RN::Function _callback;
@@ -33,4 +31,4 @@ namespace HP
 	};
 }
 
-#endif /* defined(__Hacktopus__HPIntro__) */
+#endif /* defined(__Hacktopus__HPOutro__) */

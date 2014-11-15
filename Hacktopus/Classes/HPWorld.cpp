@@ -54,6 +54,13 @@ namespace HP
 		_camera->AddAttachment(audioListener);
 	}
 	
+	void World::PlayOutro(bool win)
+	{
+		_inIntro = true;
+		Outro *outro = new Outro();
+		outro->Play([&]{_inIntro = false;}, win);
+	}
+	
 	void World::LeftFromIntro()
 	{
 		_inIntro = false;
@@ -70,7 +77,7 @@ namespace HP
 		_camera->SetClipFar(20000);
 		
 		RN::Billboard *background = new RN::Billboard();
-		background->SetTexture(RN::Texture::WithFile("Textures/background.png"), 1.0f);
+		background->SetTexture(RN::Texture::WithFile("Textures/bg4.png"), 1.0f);
 		background->SetPosition(RN::Vector3(0.0f, 0.0f, -10000.0f));
 		background->SetSize(RN::Vector2(1920.0f, 1200.0f));
 		background->GetMaterial()->SetLighting(false);

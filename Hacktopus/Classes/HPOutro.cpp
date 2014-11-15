@@ -1,24 +1,17 @@
 //
-//  HPIntro.cpp
+//  HPOutro.cpp
 //  Hacktopus
 //
 //  Created by Nils Daumann on 15.11.14.
 //  Copyright (c) 2014 Überpixel. All rights reserved.
 //
 
-#include "HPIntro.h"
+#include "HPOutro.h"
 #include "HPWorld.h"
-
-uint32 times[13] = {
-	500, 500, 1500, 1500,
-	1500, 1500, 1500,
-	2000, 1500, 2500,
-	1000, 1500, 3800
-};
 
 namespace HP
 {
-	Intro::Intro() :
+	Outro::Outro() :
 		RN::UI::Widget(RN::UI::Widget::Style::Borderless),
 		_state(0)
 	{
@@ -32,13 +25,15 @@ namespace HP
 		GetContentView()->AddSubview(_imageView);
 	}
 	
-	Intro::~Intro()
+	Outro::~Outro()
 	{}
 	
-	void Intro::Play(RN::Function &&f)
+	void Outro::Play(RN::Function &&f, bool win)
 	{
 		_callback = std::move(f);
-		_stopped = false;
+		
+		if(!win)
+			_state = 100;
 		
 		StepForward();
 		Open();
@@ -48,7 +43,6 @@ namespace HP
 			RN::Kernel::GetSharedInstance()->ScheduleFunction([this] {
 				
 				_callback();
-				_stopped = true;
 				
 				Close();
 				RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
@@ -57,22 +51,19 @@ namespace HP
 		}, this);
 	}
 	
-	RN::Texture *Intro::GetIntroImageWithID(size_t index)
+	RN::Texture *Outro::GetOutroImageWithID(size_t index)
 	{
 		std::stringstream stream;
-		stream << "Intro/intro_frame" << index << ".png";
+		stream << "Outro/outro_frame" << index << ".png";
 		
 		return RN::Texture::WithFile(stream.str());
 	}
 	
-	void Intro::StepForward()
+	void Outro::StepForward()
 	{
-		if(_stopped)
-			return;
-		
 		_state ++;
 		
-		if(_state >= 14)
+		if(_state == 3 || _state == 102)
 		{
 			Close();
 			_callback();
@@ -81,15 +72,9 @@ namespace HP
 			return;
 		}
 		
-		RN::UI::Image *image = new RN::UI::Image(GetIntroImageWithID(_state));
+		RN::UI::Image *image = new RN::UI::Image(GetOutroImageWithID(_state));
 		_imageView->SetImage(image->Autorelease());
 		
-		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(times[_state - 1]), [this]{ StepForward(); }, false);
-		
-		if(_state == 13)
-		{
-			RN::AudioResource *audio = RN::AudioResource::WithFile("Intro/DUNDUNDUUUUUN.ogg");
-			World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
-		}
+		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(5000), [this]{ StepForward(); }, false);
 	}
 }

@@ -14,6 +14,7 @@
 #include "HPEnemy.h"
 #include "HPPlayer.h"
 #include "HPProgressDoor.h"
+#include "HPOutro.h"
 #include <RALAudioWorld.h>
 
 namespace HP
@@ -25,12 +26,14 @@ namespace HP
 		~World() override;
 		
 		void LeftFromIntro();
+		void PlayOutro(bool win);
 		
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void Update(float delta) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
 		RN::Vector4 GetOrthogonalSize() {return _orthogonalSize;}
+		bool IsInIntro(){return _inIntro;}
 		
 	private:
 		bool _inIntro;
