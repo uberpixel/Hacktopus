@@ -21,7 +21,7 @@ namespace HP
 		
 		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18)->Retain();
 		_textColor = RN::UI::Color::WithRGB(0.055, 1, 0)->Retain();
-		_shadowColor = RN::UI::Color::WithRGBA(1, 1, 0, 0.2)->Retain();
+		_shadowColor = RN::UI::Color::WithRGBA(0.047, 0.588, 0, 0.2)->Retain();
 		_text = new RN::String();
 		
 		RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
