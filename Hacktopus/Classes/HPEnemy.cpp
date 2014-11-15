@@ -13,7 +13,7 @@
 
 namespace HP
 {
-	RNDefineMeta(Enemy, RN::Billboard)
+	RNDefineMeta(Enemy, AnimatableEntity)
 	
 	Enemy::Enemy() :
 		AnimatableEntity(false),
@@ -21,15 +21,12 @@ namespace HP
 		_active(true),
 		_qteItems(new RN::Array())
 	{
-		SetDefaultTexture(RN::Texture::WithFile("Textures/Mensch1_walk+0.png"));
+		SetTexture(RN::Texture::WithFile("Textures/enemy.png"));
 		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
 		GetMaterial()->SetLighting(false);
 		GetMaterial()->SetDepthWrite(false);
 		GetMaterial()->SetBlending(true);
 		GetMaterial()->SetCullMode(RN::Material::CullMode::None);
-		
-		PlayAnimation("Textures/Mensch1_walk");
-		RepeateAnimation();
 	}
 	
 	Enemy::~Enemy()
@@ -109,7 +106,9 @@ namespace HP
 		
 		RN::Random::MersenneTwister random;
 		
-		for(int i = 0; i < 3; i ++)
+		int qtes = 3 + (ProgressDoor::GetSharedInstance()->GetProgress() / 35);
+		
+		for(int i = 0; i < qtes; i ++)
 			_qte.push_back(buttons.at(random.GetRandomInt32Range(0, static_cast<int32>(buttons.size()))));
 		
 		UpdateQTEItems();
@@ -117,8 +116,6 @@ namespace HP
 	
 	void Enemy::Update(float delta)
 	{
-		AnimatableEntity::Update(delta);
-		
 		if(!_dead)
 		{
 			Translate(RN::Vector3(delta*200.0f*((GetPosition().x > 0)?-1.0f:1.0f), 0.0f, 0.0f));

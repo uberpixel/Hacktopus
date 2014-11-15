@@ -20,6 +20,7 @@ namespace HP
 		~ProgressDoor();
 		
 		void Progress(float progress);
+		float GetProgress() const { return _progress; }
 		
 	private:
 		float _progress;
