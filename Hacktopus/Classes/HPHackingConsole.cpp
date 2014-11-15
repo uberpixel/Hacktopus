@@ -89,8 +89,6 @@ namespace HP
 			_widget->Open();
 		
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));
-			PrintCommand(RNCSTR("cd /sbin/iggj7/"));
-			PrintCommand(RNCSTR("./masterhack"));
 			PrintCommand(RNCSTR("Select: [n]ew game, [h]elp, [e]xit"));
 		}
 		
@@ -104,6 +102,10 @@ namespace HP
 	void HackingConsole::StartHacking()
 	{
 		_hacking = true;
+		
+		PrintCommand(RNCSTR("cd /sbin/iggj7/"));
+		PrintCommand(RNCSTR("./masterhack"));
+		
 		PickWord();
 	}
 	
@@ -221,7 +223,6 @@ namespace HP
 		_wordlistIndex = (_wordlistIndex + 1) % _wordlist->GetCount();
 		
 		UpdateCharacter();
-		PrintCommand(RNCSTR(""));
 	}
 	
 	void HackingConsole::TakeInput(RN::Event *event)
@@ -270,6 +271,8 @@ namespace HP
 			{
 				ProgressDoor::GetSharedInstance()->Progress(10.0f);
 				PickWord();
+				
+				PrintCommand(RNCSTR(""));
 				return;
 			}
 			
