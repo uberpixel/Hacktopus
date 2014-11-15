@@ -45,7 +45,7 @@ namespace HP
 	void Player::Attack(Enemy *target)
 	{
 		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/test.ogg");
-		RN::openal::AudioSource *audioSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+		World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 		
 		RN::Vector3 position = target->GetPosition();
 		target->kill();

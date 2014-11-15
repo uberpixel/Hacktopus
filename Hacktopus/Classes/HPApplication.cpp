@@ -22,9 +22,12 @@ namespace HP
 		
 		RN::WindowConfiguration *configuration = new RN::WindowConfiguration(960, 600);
 		RN::Window::GetSharedInstance()->ActivateConfiguration(configuration->Autorelease(), 0);
-
-		RN::World *world = new World();
-		RN::WorldCoordinator::GetSharedInstance()->LoadWorld(world->Autorelease());
+		
+//		Intro *intro = new Intro();
+//		intro->Play([]{
+			RN::World *world = new World();
+			RN::WorldCoordinator::GetSharedInstance()->LoadWorld(world->Autorelease());
+//		});
 	}
 	
 	void Application::WillExit()

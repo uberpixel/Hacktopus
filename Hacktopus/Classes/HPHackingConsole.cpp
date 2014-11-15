@@ -24,7 +24,7 @@ namespace HP
 		
 		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18)->Retain();
 		_textColor = RN::UI::Color::WithRGB(0.055, 1, 0)->Retain();
-		_shadowColor = RN::UI::Color::WithRGBA(0.047, 0.588, 0, 0.2)->Retain();
+		_shadowColor = RN::UI::Color::WithRGB(0.055*0.8f, 1*0.8f, 0.2f)->Retain();
 		_text = new RN::String();
 		
 		ShuffleWords();
@@ -82,10 +82,10 @@ namespace HP
 			_shadow->SetNumberOfLines(0);
 			_shadow->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
 			
-			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, RN::Rect(374, 100, 348, 201));
+			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, RN::Rect(333, 110, 750, 300));
 			_widget->GetContentView()->AddSubview(_shadow);
 			_widget->GetContentView()->AddSubview(_label);
-			_widget->GetContentView()->SetBackgroundColor(RN::UI::Color::Black());
+			_widget->GetContentView()->SetBackgroundColor(RN::UI::Color::ClearColor());
 			_widget->Open();
 		
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));

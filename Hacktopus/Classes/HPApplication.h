@@ -11,6 +11,7 @@
 
 #include <Rayne/Rayne.h>
 #include "HPWorld.h"
+#include "HPIntro.h"
 
 namespace HP
 {
