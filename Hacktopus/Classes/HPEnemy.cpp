@@ -8,6 +8,8 @@
 
 #include "HPEnemy.h"
 #include "HPPlayer.h"
+#include "HPProgressDoor.h"
+#include "HPWorld.h"
 
 namespace HP
 {
@@ -52,6 +54,8 @@ namespace HP
 			
 			if(RN::Math::FastAbs(GetPosition().x) < 100)
 			{
+				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
+				World::GetActiveWorld()->Downcast<World>()->Screenshake();
 				RemoveFromWorld();
 			}
 		}

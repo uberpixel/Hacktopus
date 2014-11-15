@@ -300,7 +300,7 @@ namespace HP
 		}
 		else
 		{
-			ProgressDoor::GetSharedInstance()->Progress(-10.0f);
+			ProgressDoor::GetSharedInstance()->Progress(-5.0f);
 			_wasLastCorrect = false;
 			UpdateCharacter();
 		}

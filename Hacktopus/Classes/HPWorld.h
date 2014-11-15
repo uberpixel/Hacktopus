@@ -28,12 +28,15 @@ namespace HP
 		void Update(float delta) override;
 		void FinishLoading(RN::Deserializer *deserializer) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
+		void Screenshake(float time = 0.15f, float strength = 0.2f);
 		
 	private:
 		RN::Camera *_camera;
 		HackingConsole *_console;
 		RN::RandomNumberGenerator *_rng;
 		float _time;
+		float _shakeTime;
+		float _shakeStrength;
 		RN::openal::AudioWorld *_audioWorld;
 	};
 }
