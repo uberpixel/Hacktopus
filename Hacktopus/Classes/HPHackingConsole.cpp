@@ -222,6 +222,9 @@ namespace HP
 		
 		_wordlistIndex = (_wordlistIndex + 1) % _wordlist->GetCount();
 		
+		if(_wordlistIndex == 0)
+			ShuffleWords();
+		
 		UpdateCharacter();
 	}
 	
