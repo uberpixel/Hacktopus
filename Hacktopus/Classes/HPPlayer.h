@@ -22,6 +22,9 @@ namespace HP
 		void Attack(RN::SceneNode *target);
 		
 	private:
+		RN::Billboard *_body;
+		RN::Billboard *_armRight;
+		RN::Billboard *_armLeft;
 		
 		RNDeclareSingleton(Player)
 	};
