@@ -17,7 +17,7 @@ namespace HP
 	: RN::Billboard(false), _dead(false)
 	{
 		SetTexture(RN::Texture::WithFile("Textures/enemy.png"));
-		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight()));
+		SetSize(RN::Vector2(GetTexture()->GetWidth(), GetTexture()->GetHeight())*0.8f);
 		GetMaterial()->SetLighting(false);
 		GetMaterial()->SetDepthWrite(false);
 		GetMaterial()->SetBlending(true);

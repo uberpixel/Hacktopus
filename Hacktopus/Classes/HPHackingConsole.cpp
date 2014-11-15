@@ -80,7 +80,7 @@ namespace HP
 			_shadow->SetNumberOfLines(0);
 			_shadow->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
 			
-			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, RN::Rect(374, 121, 348, 201));
+			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, RN::Rect(374, 100, 348, 201));
 			_widget->GetContentView()->AddSubview(_shadow);
 			_widget->GetContentView()->AddSubview(_label);
 			_widget->GetContentView()->SetBackgroundColor(RN::UI::Color::Black());
