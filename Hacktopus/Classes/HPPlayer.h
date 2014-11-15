@@ -26,7 +26,7 @@ namespace HP
 		void RemoveLife();
 		
 	private:
-		RN::Billboard *_body;
+		AnimatableEntity *_body;
 		RN::Billboard *_lifes[5];
 		int _numberOfLifes;
 		

@@ -15,7 +15,9 @@ namespace HP
 	
 	Player::Player() : _numberOfLifes(4)
 	{
-		_body = new RN::Billboard(RN::Texture::WithFile("Textures/hektor.png"));
+		_body = new AnimatableEntity(RN::Texture::WithFile("Textures/hektor.png"));
+		_body->PlayAnimationFile("Animations/hektor_type1.json");
+		_body->RepeateAnimation();
 		_body->SetPosition(RN::Vector3(0.0f, 300.0f, -4000.0f));
 		_body->GetMaterial()->SetLighting(false);
 		_body->GetMaterial()->SetAmbientColor(RN::Color::White());
