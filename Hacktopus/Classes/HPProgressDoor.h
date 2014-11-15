@@ -23,6 +23,8 @@ namespace HP
 		
 	private:
 		float _progress;
+		RN::Vector3 _position;
+		RN::Vector3 _offsetFactor;
 		
 		RNDeclareSingleton(ProgressDoor)
 	};

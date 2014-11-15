@@ -14,6 +14,7 @@
 #include "HPEnemy.h"
 #include "HPPlayer.h"
 #include "HPProgressDoor.h"
+#include <RALAudioWorld.h>
 
 namespace HP
 {
@@ -26,13 +27,14 @@ namespace HP
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void Update(float delta) override;
 		void FinishLoading(RN::Deserializer *deserializer) override;
-		
+		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		
 	private:
 		RN::Camera *_camera;
 		HackingConsole *_console;
 		RN::RandomNumberGenerator *_rng;
 		float _time;
+		RN::openal::AudioWorld *_audioWorld;
 	};
 }
 

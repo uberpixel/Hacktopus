@@ -12,11 +12,14 @@ namespace HP
 {
 	RNDefineSingleton(ProgressDoor)
 	
-	ProgressDoor::ProgressDoor() : _progress(0.0f)
+	ProgressDoor::ProgressDoor() : _progress(0.0f), _position(RN::Vector3(-400.0f, 0.0f, -9000.0f))
 	{
 		SetTexture(RN::Texture::WithFile("Textures/enemy.png"), 1.0f);
-		SetPosition(RN::Vector3(-300.0f, 0.0f, -9000.0f));
+		SetPosition(_position);
 		GetMaterial()->SetLighting(false);
+		
+		_offsetFactor = RN::Vector3(GetSize(), 0.0f)/100.0f;
+		_offsetFactor.y *= -1.0f;
 	}
 	
 	ProgressDoor::~ProgressDoor()
@@ -30,9 +33,8 @@ namespace HP
 		if(_progress < 0.0f)
 		{
 			_progress = 0.0f;
-			progress = 0.0f;
 		}
 		
-		Translate(RN::Vector3(progress, -progress, 0.0f));
+		SetPosition(_position+_offsetFactor*_progress);
 	}
 }

@@ -12,6 +12,7 @@
 #include <Rayne/Rayne.h>
 #include "HPAnimatableEntity.h"
 #include "HPEnemy.h"
+#include <RALAudioWorld.h>
 
 namespace HP
 {

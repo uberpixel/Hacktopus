@@ -1,6 +1,5 @@
 {
 	"RNUIStyle": "ui/rn_uistyle.json",
-	"RNModules": [
-	],
+	"RNModules": ["Modules/rayne-ogg/librayne-ogg"],
 	"RNApplication": "Hacktopus"
 }

@@ -14,6 +14,9 @@ namespace HP
 		RN::World("GenericSceneManager")
 	{
 		_rng = new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister);
+		
+		_audioWorld = new RN::openal::AudioWorld();
+		AddAttachment(_audioWorld);
 	}
 	
 	World::~World()
@@ -28,6 +31,9 @@ namespace HP
 		_camera->SetClipFar(20000);
 		_camera->SetOrthogonalFrustum(-frustomHeight*0.5f, frustomHeight*0.5f, -960.0f, 960.0f);
 		_camera->SetClearColor(RN::Color::Black());
+		
+		RN::openal::AudioListener *audioListener = new RN::openal::AudioListener();
+		_camera->AddAttachment(audioListener);
 		
 		RN::Billboard *background = new RN::Billboard();
 		background->SetTexture(RN::Texture::WithFile("Textures/background.png"), 1.0f);

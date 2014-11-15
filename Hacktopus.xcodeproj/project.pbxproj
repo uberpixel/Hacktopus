@@ -292,13 +292,19 @@
 					"$(inherited)",
 					/usr/local/include/rayne/,
 					"\"$(SRCROOT)/Hacktopus/Vendor\"",
+					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal/include\"",
 				);
 				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/,
+					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal\"",
 				);
-				OTHER_LDFLAGS = "-lRayne";
+				OTHER_LDFLAGS = (
+					"-lRayne",
+					"-lopenal.1.15.1",
+					"-lrayne-openal",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -317,13 +323,19 @@
 					"$(inherited)",
 					/usr/local/include/rayne/,
 					"\"$(SRCROOT)/Hacktopus/Vendor\"",
+					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal/include\"",
 				);
 				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/,
+					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal\"",
 				);
-				OTHER_LDFLAGS = "-lRayne";
+				OTHER_LDFLAGS = (
+					"-lRayne",
+					"-lopenal.1.15.1",
+					"-lrayne-openal",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
