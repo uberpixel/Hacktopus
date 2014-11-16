@@ -18,7 +18,7 @@ namespace HP
 		_topDoor = new RN::Billboard();
 		_topDoor->SetTexture(RN::Texture::WithFile("Textures/door2_400x360.png"), 1.0f);
 		_topDoor->SetPosition(_position);
-		_topDoor->Translate(RN::Vector3(0.0f, 0.0f, -500.0f));
+		_topDoor->Translate(RN::Vector3(0.0f, 0.0f, 1000.0f));
 		_topDoor->GetMaterial()->SetLighting(false);
 		_bottomDoor = new RN::Billboard();
 		_bottomDoor->SetTexture(RN::Texture::WithFile("Textures/door1_400x360.png"), 1.0f);

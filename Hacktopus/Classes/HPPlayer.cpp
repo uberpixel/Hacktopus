@@ -48,7 +48,7 @@ namespace HP
 		
 		for(int i = 0; i < 5; i++)
 		{
-			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
+			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green.png"));
 			_lifes[i]->GetMaterial()->SetLighting(false);
 		}
 		
@@ -70,7 +70,7 @@ namespace HP
 		
 		for(int i = 0; i < 5; i++)
 		{
-			_lifes[i]->SetTexture(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
+			_lifes[i]->SetTexture(RN::Texture::WithFile("Textures/health_button_green.png"));
 		}
 	}
 	
@@ -84,7 +84,7 @@ namespace HP
 			return;
 		}
 		
-		_lifes[_numberOfLifes --]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
+		_lifes[_numberOfLifes --]->SetTexture(RN::Texture::WithFile("Textures/health_button_red.png"));
 	}
 	
 	void Player::KeepTyping()

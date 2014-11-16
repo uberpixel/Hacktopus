@@ -150,6 +150,9 @@ namespace HP
 	
 	void World::LeftFromIntro()
 	{
+		if(!_inIntro)
+			return;
+		
 		_inIntro = false;
 		
 		PlayMusic(3);
@@ -186,16 +189,16 @@ namespace HP
 		miniScreen->RepeateAnimation();
 		miniScreen->SetPosition(RN::Vector3(0.0f, 0.0f, -9000.0f));
 		
-		/*RN::Camera *uiCamera = RN::UI::Server::GetSharedInstance()->GetCamera();
-		uiCamera->SetFlags(uiCamera->GetFlags()|RN::Camera::Flags::NoFlush);
-		RN::Texture *uiTexture = uiCamera->GetRenderTarget();
-		RN::Billboard *uiBillboard = new RN::Billboard(false);
-		uiBillboard->SetTexture(uiTexture, 1.0f);
-		uiBillboard->SetPosition(RN::Vector3(0.0f, 0.0f, -9000));
-		uiBillboard->SetScale(RN::Vector3(-1.0f, -1.0f, 1.0f));
-		uiBillboard->GetMaterial()->SetLighting(false);
-		uiBillboard->GetMaterial()->SetCullMode(RN::Material::CullMode::None);
-		_camera->SetPriority(10000);*/
+		RN::Billboard *medsglow = new RN::Billboard();
+		medsglow->SetTexture(RN::Texture::WithFile("Textures/meds_blinking_glow.png"), 1.0f);
+		medsglow->SetPosition(RN::Vector3(-738.0f, -397.0f, -9000.0f));
+		medsglow->GetMaterial()->SetLighting(false);
+		medsglow->GetMaterial()->SetAmbientColor(RN::Color::White());
+		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(1000), [medsglow]{
+			medsglow->SetPosition(RN::Vector3(medsglow->GetPosition().x, medsglow->GetPosition().y, -9000.0f));
+			
+			RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(500), [medsglow]{medsglow->SetPosition(RN::Vector3(medsglow->GetPosition().x, medsglow->GetPosition().y, -11000.0f));}, false);
+		}, true);
 		
 		Player::GetSharedInstance()->Reset();
 		ProgressDoor::GetSharedInstance()->Reset();

@@ -72,9 +72,6 @@ namespace HP
 			
 			_wordlist->ReplaceObjectAtIndex(index, b);
 			_wordlist->ReplaceObjectAtIndex(i, a);
-			
-			a->Release();
-			b->Release();
 		}
 	}
 	
