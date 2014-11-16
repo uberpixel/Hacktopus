@@ -169,11 +169,21 @@ namespace HP
 		{
 			PrintOutput(RNCSTR("."));
 			PrintOutput(RNCSTR(".."));
-			PrintCommand(RNCSTR("masterhack"));
+			PrintOutput(RNCSTR("lose"));
+			PrintOutput(RNCSTR("masterhack"));
+			PrintCommand(RNCSTR("win"));
 		}
 		else if(_input->GetRangeOfString(RNCSTR("cat")).origin == 0)
 		{
 			PrintCommand(RNCSTR("meow meow meow"));
+		}
+		else if(_input->IsEqual(RNCSTR("./win")))
+		{
+			World::GetActiveWorld()->Downcast<World>()->PlayOutro(true);
+		}
+		else if(_input->IsEqual(RNCSTR("./lose")))
+		{
+			World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);
 		}
 		else
 		{

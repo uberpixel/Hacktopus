@@ -9,6 +9,14 @@
 #include "HPOutro.h"
 #include "HPWorld.h"
 
+uint32 times_win[3] = {
+	1000, 1000, 1000
+};
+
+uint32 times_lose[1] = {
+	6000
+};
+
 namespace HP
 {
 	Outro::Outro() :
@@ -33,22 +41,15 @@ namespace HP
 		_callback = std::move(f);
 		
 		if(!win)
+		{
 			_state = 100;
+			
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Outro/ende.ogg");
+			World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+		}
 		
 		StepForward();
 		Open();
-		
-		RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
-			
-			RN::Kernel::GetSharedInstance()->ScheduleFunction([this] {
-				
-				_callback();
-				
-				Close();
-				RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
-				
-			});
-		}, this);
 	}
 	
 	RN::Texture *Outro::GetOutroImageWithID(size_t index)
@@ -75,6 +76,7 @@ namespace HP
 		RN::UI::Image *image = new RN::UI::Image(GetOutroImageWithID(_state));
 		_imageView->SetImage(image->Autorelease());
 		
-		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(5000), [this]{ StepForward(); }, false);
+		uint32_t wait = (_state >= 100) ? times_lose[_state - 101] : times_win[_state - 1];
+		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(wait), [this]{ StepForward(); }, false);
 	}
 }
