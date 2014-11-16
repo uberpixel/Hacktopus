@@ -217,8 +217,8 @@ namespace HP
 	
 	void World::Screenshake(float time, float strength)
 	{
-		//_shakeTime = time;
-		//_shakeStrength = strength;
+		_shakeTime = time;
+		_shakeStrength = strength;
 	}
 	
 	void World::Update(float delta)
@@ -316,8 +316,7 @@ namespace HP
 		_shakeTime -= delta;
 		if(_shakeTime > 0)
 		{
-			float shake = _rng->GetRandomFloatRange(1.0-_shakeStrength, 1.0f);
-			_camera->SetOrthogonalFrustum(_orthogonalSize.x*shake, _orthogonalSize.y*shake, _orthogonalSize.z*shake, _orthogonalSize.w*shake);
+			
 			
 #ifndef RN_PLATFORM_WINDOWS
 			if(_gamepad)
@@ -326,7 +325,7 @@ namespace HP
 		}
 		else
 		{
-			_camera->SetOrthogonalFrustum(_orthogonalSize.x, _orthogonalSize.y, _orthogonalSize.z, _orthogonalSize.w);
+			
 			
 #ifndef RN_PLATFORM_WINDOWS
 			if(_gamepad)
