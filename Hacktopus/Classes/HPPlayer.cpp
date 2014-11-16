@@ -22,6 +22,15 @@ namespace HP
 		_body->GetMaterial()->SetAmbientColor(RN::Color::White());
 		_body->GetMaterial()->SetDepthWrite(false);
 		
+		_eyes = new RN::Billboard(RN::Texture::WithFile("Textures/hektor_blinzeln.png"));
+		_eyes->SetPosition(RN::Vector3(_body->GetPosition().x, _body->GetPosition().y, -3500.0f));
+		_eyes->GetMaterial()->SetLighting(false);
+		RN::Timer::ScheduledTimerWithDuration(std::chrono::seconds(3), [&]{
+				_eyes->SetPosition(RN::Vector3(_body->GetPosition().x, _body->GetPosition().y, -3500.0f));
+
+			RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(100), [&]{_eyes->SetPosition(RN::Vector3(_body->GetPosition().x, _body->GetPosition().y, -11000.0f));}, false);
+				}, true);
+		
 		_armRight = new AnimatableEntity();
 		_armRight->SetDefaultTexture(RN::Texture::WithFile("Textures/tentakelarm+0.png"));
 		_armRight->SetPosition(RN::Vector3(500.0f, 290.0f, -3000.0f));

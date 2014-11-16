@@ -9,14 +9,6 @@
 #include "HPOutro.h"
 #include "HPWorld.h"
 
-uint32 times_win[3] = {
-	1000, 1000, 1000
-};
-
-uint32 times_lose[1] = {
-	1000
-};
-
 namespace HP
 {
 	Outro::Outro() :
@@ -47,6 +39,14 @@ namespace HP
 			
 			World::GetActiveWorld()->Downcast<World>()->PlayMusic(4);
 		}
+		else
+		{
+			World::GetActiveWorld()->Downcast<World>()->PlayMusic(5);
+			if(RN::Random::MersenneTwister().GetRandomInt32Range(0, 1))
+			{
+				_state = 10;
+			}
+		}
 		
 		StepForward();
 		Open();
@@ -64,7 +64,7 @@ namespace HP
 	{
 		_state ++;
 		
-		if(_state == 3 || _state == 102)
+		if(_state == 2 || _state == 12 || _state == 102)
 		{
 			RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
 				
@@ -84,7 +84,7 @@ namespace HP
 		RN::UI::Image *image = new RN::UI::Image(GetOutroImageWithID(_state));
 		_imageView->SetImage(image->Autorelease());
 		
-		uint32_t wait = (_state >= 100) ? times_lose[_state - 101] : times_win[_state - 1];
+		uint32_t wait = 3000;
 		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(wait), [this]{ StepForward(); }, false);
 	}
 }

@@ -119,9 +119,21 @@ namespace HP
 			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 			_musicSource->SetRepeat(true);
 		}
+		if(i == 3)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_menu.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource->SetRepeat(true);
+		}
 		if(i == 4)
 		{
 			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_ende.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource = nullptr;
+		}
+		if(i == 5)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/game_won.ogg");
 			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 			_musicSource = nullptr;
 		}
@@ -140,6 +152,11 @@ namespace HP
 	{
 		_inIntro = false;
 		
+		PlayMusic(3);
+		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/ambient_sound1.ogg");
+		RN::openal::AudioSource *ambient = _audioWorld->PlaySound(audio);
+		ambient->SetRepeat(true);
+		
 		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 		float aspect = resolution.y/resolution.x;
 		float frustomHeight = 1920*aspect;
@@ -157,6 +174,11 @@ namespace HP
 		background->SetSize(RN::Vector2(1920.0f, 1200.0f));
 		background->GetMaterial()->SetLighting(false);
 		background->GetMaterial()->SetAmbientColor(RN::Color::White());
+		
+		RN::Billboard *innerhole = new RN::Billboard();
+		innerhole->SetTexture(RN::Texture::WithFile("Textures/inner_hole.png"), 1.0f);
+		innerhole->SetPosition(RN::Vector3(-738.0f, -26.0f, -15000.0f));
+		innerhole->GetMaterial()->SetLighting(false);
 		
 		AnimatableEntity *miniScreen = new AnimatableEntity();
 		miniScreen->SetDefaultTexture(RN::Texture::WithFile("Textures/mini_screen+0.png"));
