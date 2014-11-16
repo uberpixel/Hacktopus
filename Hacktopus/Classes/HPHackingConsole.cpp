@@ -101,8 +101,11 @@ namespace HP
 		_wasLastCorrect = true;
 		_wordlistIndex = 0;
 		_index = 0;
+		
 		RN::SafeRelease(_input);
 		_input = new RN::String();
+		
+		RN::SafeRelease(_word);
 		
 		ShuffleWords();
 	}
@@ -191,7 +194,8 @@ namespace HP
 			PrintOutput(RNCSTR("Hack the mainframe by typing the"));
 			PrintOutput(RNCSTR("hacker commands. Slap the pesky"));
 			PrintOutput(RNCSTR("scientists before they get to you."));
-			PrintCommand(RNCSTR("Case doesn't matter"));
+			PrintOutput(RNCSTR("Case doesn't matter."));
+			PrintCommand(RNCSTR("Are you a hacker? Try ls!"));
 		}
 		else if(_input->IsEqual(RNCSTR("e")))
 		{
@@ -199,8 +203,8 @@ namespace HP
 		}
 		else if(_input->IsEqual(RNCSTR("ls")))
 		{
-			PrintOutput(RNCSTR("."));
-			PrintOutput(RNCSTR(".."));
+			PrintOutput(RNCSTR("damage"));
+			PrintOutput(RNCSTR("dundun"));
 			PrintOutput(RNCSTR("lose"));
 			PrintOutput(RNCSTR("masterhack"));
 			PrintCommand(RNCSTR("win"));
@@ -216,6 +220,17 @@ namespace HP
 		else if(_input->IsEqual(RNCSTR("./lose")))
 		{
 			World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);
+		}
+		else if(_input->IsEqual(RNCSTR("./damage")))
+		{
+			Player::GetSharedInstance()->RemoveLife();
+			PrintCommand(RNCSTR("Ouch"));
+		}
+		else if(_input->IsEqual(RNCSTR("./dundun")))
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Intro/DUNDUNDUUUUUN.ogg");
+			World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			PrintCommand(RNCSTR(""));
 		}
 		else
 		{
@@ -269,7 +284,7 @@ namespace HP
 	void HackingConsole::PrintOutput(RN::String *output)
 	{
 		_text->Append(output);
-		_text->Append("\n");
+		_text->Append("\n ");
 		
 		UpdateLabels();
 	}

@@ -42,6 +42,7 @@ namespace HP
 			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
 			_lifes[i]->GetMaterial()->SetLighting(false);
 		}
+		
 		_lifes[0]->SetPosition(RN::Vector3(-893.0f, 202.0f, -8000.0f));
 		_lifes[1]->SetPosition(RN::Vector3(-815.0f, 202.0f, -8000.0f));
 		_lifes[2]->SetPosition(RN::Vector3(-737.0f, 202.0f, -8000.0f));
@@ -57,6 +58,12 @@ namespace HP
 	void Player::Reset()
 	{
 		_numberOfLifes = 4;
+		
+		for(int i = 0; i < 5; i++)
+		{
+			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
+			_lifes[i]->GetMaterial()->SetLighting(false);
+		}
 	}
 	
 	void Player::RemoveLife()
@@ -69,8 +76,7 @@ namespace HP
 			return;
 		}
 		
-		_lifes[_numberOfLifes]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
-		_numberOfLifes -= 1;
+		_lifes[_numberOfLifes --]->SetTexture(RN::Texture::WithFile("Textures/health_button_red_50x50.png"));
 	}
 	
 	void Player::KeepTyping()
