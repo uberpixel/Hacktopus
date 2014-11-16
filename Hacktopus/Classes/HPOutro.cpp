@@ -41,6 +41,7 @@ namespace HP
 		}
 		else
 		{
+			World::GetActiveWorld()->Downcast<World>()->PlayMusic(5);
 			if(RN::Random::MersenneTwister().GetRandomInt32Range(0, 1))
 			{
 				_state = 10;

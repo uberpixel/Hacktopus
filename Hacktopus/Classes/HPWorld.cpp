@@ -131,6 +131,12 @@ namespace HP
 			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 			_musicSource = nullptr;
 		}
+		if(i == 5)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/game_won.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource = nullptr;
+		}
 	}
 	
 	void World::PlayOutro(bool win)
