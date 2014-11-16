@@ -139,6 +139,8 @@ namespace HP
 				World::GetActiveWorld()->Downcast<World>()->Screenshake(0.15, 0.1);
 				
 				_damagedDone = true;
+				RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/accid_attack.ogg");
+				World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 				Player::GetSharedInstance()->RemoveLife();
 			}
 			

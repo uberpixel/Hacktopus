@@ -407,6 +407,9 @@ namespace HP
 			
 			if(_index == _word->GetLength())
 			{
+				RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/console_start.ogg");
+				World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+				
 				ProgressDoor::GetSharedInstance()->Progress(10.0f);
 				PickWord();
 				
@@ -423,7 +426,12 @@ namespace HP
 				return;
 			
 			if(_cooldown <= 0.0f)
+			{
 				ProgressDoor::GetSharedInstance()->Progress(-5.0f);
+				
+				RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/console_error1.ogg");
+				World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			}
 			
 			_wasLastCorrect = false;
 			_cooldown = 1.25f;
