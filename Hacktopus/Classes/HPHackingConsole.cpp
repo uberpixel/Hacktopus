@@ -297,7 +297,7 @@ namespace HP
 		UpdateLabels();
 	}
 	
-	void HackingConsole::PushInput(UniChar character)
+	void HackingConsole::PushInput(RN::UniChar character)
 	{
 		_text->Append(RN::String::WithFormat("%c", static_cast<char>(character)));
 		

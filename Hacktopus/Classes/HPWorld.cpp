@@ -294,15 +294,19 @@ namespace HP
 			float shake = _rng->GetRandomFloatRange(1.0-_shakeStrength, 1.0f);
 			_camera->SetOrthogonalFrustum(_orthogonalSize.x*shake, _orthogonalSize.y*shake, _orthogonalSize.z*shake, _orthogonalSize.w*shake);
 			
+#ifndef RN_PLATFORM_WINDOWS
 			if(_gamepad)
 				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(255));
+#endif
 		}
 		else
 		{
 			_camera->SetOrthogonalFrustum(_orthogonalSize.x, _orthogonalSize.y, _orthogonalSize.z, _orthogonalSize.w);
 			
+#ifndef RN_PLATFORM_WINDOWS
 			if(_gamepad)
 				_gamepad->ExecuteCommand(RNCSTR("rumble"), RN::Number::WithUint8(0));
+#endif
 		}
 	}
 }

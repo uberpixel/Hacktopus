@@ -38,7 +38,7 @@ namespace HP
 		void UpdateLabels();
 		void PrintCommand(RN::String *command);
 		void PrintOutput(RN::String *output);
-		void PushInput(UniChar character);
+		void PushInput(RN::UniChar character);
 		
 		void PickWord();
 		void TakeInput(RN::Event *event);

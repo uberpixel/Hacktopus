@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{54dbe1ba-b9cf-48f6-bef7-b15df7b30dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Supporting files">
+      <UniqueIdentifier>{1145c3b6-1326-4941-a01e-9ac8ae8620d2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Hacktopus\Supporting files\main.cpp">
+      <Filter>Supporting files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPAnimatableEntity.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPApplication.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPEnemy.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPHackingConsole.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPIntro.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPOutro.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPPlayer.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPProgressDoor.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Hacktopus\Classes\HPWorld.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Hacktopus\Classes\HPAnimatableEntity.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPApplication.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPEnemy.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPHackingConsole.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPIntro.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPOutro.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPPlayer.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPProgressDoor.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Hacktopus\Classes\HPWorld.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
