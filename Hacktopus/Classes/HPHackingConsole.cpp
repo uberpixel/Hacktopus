@@ -25,9 +25,9 @@ namespace HP
 		_wordlist->Retain();
 		
 #if RN_PLATFORM_WINDOWS
-		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18 * 2)->Retain();
+		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18 * 1.5)->Retain();
 #else
-		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18)->Retain();
+		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18 * 1.5)->Retain();
 #endif
 
 		_textColor = RN::UI::Color::WithRGB(0.055, 1, 0)->Retain();
