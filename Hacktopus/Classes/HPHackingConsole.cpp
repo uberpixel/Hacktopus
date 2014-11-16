@@ -112,22 +112,6 @@ namespace HP
 		
 		if(!_widget)
 		{
-			_label = new RN::UI::Label();
-			_label->SetFrame(RN::Rect(0, 0, 348, 201).Inset(5, 5));
-			_label->SetFont(_font);
-			_label->SetTextColor(_textColor);
-			_label->SetText(_text);
-			_label->SetNumberOfLines(0);
-			_label->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
-			
-			_shadow = new RN::UI::Label();
-			_shadow->SetFrame(RN::Rect(0, 0, 348, 201).Inset(5, 5));
-			_shadow->SetFont(_font);
-			_shadow->SetTextColor(_shadowColor);
-			_shadow->SetText(_text);
-			_shadow->SetNumberOfLines(0);
-			_shadow->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
-			
 			RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 			RN::Rect widgetRect(333, 110, 750, 300);
 			widgetRect.x /= 960.0f;
@@ -140,6 +124,22 @@ namespace HP
 			widgetRect.y += resolution.y/2.0f;
 			widgetRect.width *= resolution.x/960.0f;
 			widgetRect.height *= resolution.y/600.0f;
+			
+			_label = new RN::UI::Label();
+			_label->SetFrame(RN::Rect(0, 0, widgetRect.width, widgetRect.height).Inset(5, 5));
+			_label->SetFont(_font);
+			_label->SetTextColor(_textColor);
+			_label->SetText(_text);
+			_label->SetNumberOfLines(0);
+			_label->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
+			
+			_shadow = new RN::UI::Label();
+			_shadow->SetFrame(RN::Rect(0, 0, widgetRect.width, widgetRect.height).Inset(5, 5));
+			_shadow->SetFont(_font);
+			_shadow->SetTextColor(_shadowColor);
+			_shadow->SetText(_text);
+			_shadow->SetNumberOfLines(0);
+			_shadow->SetLineBreak(RN::UI::LineBreakMode::TruncateHead);
 			
 			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, widgetRect);
 			_widget->GetContentView()->AddSubview(_shadow->Autorelease());
