@@ -109,8 +109,8 @@ namespace HP
 	
 	void World::Screenshake(float time, float strength)
 	{
-		_shakeTime = time;
-		_shakeStrength = strength;
+		//_shakeTime = time;
+		//_shakeStrength = strength;
 	}
 	
 	void World::Update(float delta)

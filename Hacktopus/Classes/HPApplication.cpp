@@ -21,7 +21,7 @@ namespace HP
 		SetTitle("Hacktopus");
 		
 		RN::WindowConfiguration *configuration = new RN::WindowConfiguration(1280, 720);
-		RN::Window::GetSharedInstance()->ActivateConfiguration(configuration->Autorelease(), RN::Window::Mask::Fullscreen);
+		RN::Window::GetSharedInstance()->ActivateConfiguration(configuration->Autorelease(), 0);
 		
 		Intro *intro = new Intro();
 		
