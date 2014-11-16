@@ -53,14 +53,16 @@ namespace HP
 			
 			World::GetActiveWorld()->Downcast<World>()->GameEnded();
 			
-			RN::Billboard *medizin = new RN::Billboard("Textures/medizin.png");
-			medizin->SetPosition(RN::Vector3(-200.0f, 100.0f, -1000.0f));
+			RN::Billboard *medizin = new RN::Billboard();
+			medizin->SetTexture(RN::Texture::WithFile("Textures/medizin.png"));
+			medizin->GetMaterial()->SetLighting(false);
+			medizin->SetPosition(RN::Vector3(-738.0f, -200.0f, -14000.0f));
 			medizin->SetAction([](RN::SceneNode *medizin, float delta){
-				if(medizin->GetPosition().y > 0.0f)
-					medizin->Translate(RN::Vector3(0.0f, -100.0f*delta));
+				if(medizin->GetPosition().y < -26.0f)
+					medizin->Translate(RN::Vector3(0.0f, 200.0f*delta, 0.0f));
 			});
 			
-			RN::Timer::ScheduledTimerWithDuration(std::chrono::seconds(1), []{World::GetActiveWorld()->Downcast<World>()->PlayOutro(true);}, false);
+			RN::Timer::ScheduledTimerWithDuration(std::chrono::seconds(4), []{World::GetActiveWorld()->Downcast<World>()->PlayOutro(true);}, false);
 		}
 		
 		RN::Vector3 topPosition = _position+_offsetFactor*_progress;

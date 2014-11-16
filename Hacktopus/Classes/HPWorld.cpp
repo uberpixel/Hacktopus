@@ -175,6 +175,11 @@ namespace HP
 		background->GetMaterial()->SetLighting(false);
 		background->GetMaterial()->SetAmbientColor(RN::Color::White());
 		
+		RN::Billboard *innerhole = new RN::Billboard();
+		innerhole->SetTexture(RN::Texture::WithFile("Textures/inner_hole.png"), 1.0f);
+		innerhole->SetPosition(RN::Vector3(-738.0f, -26.0f, -15000.0f));
+		innerhole->GetMaterial()->SetLighting(false);
+		
 		AnimatableEntity *miniScreen = new AnimatableEntity();
 		miniScreen->SetDefaultTexture(RN::Texture::WithFile("Textures/mini_screen+0.png"));
 		miniScreen->PlayAnimationFile("Animations/mini_screen1.json");
