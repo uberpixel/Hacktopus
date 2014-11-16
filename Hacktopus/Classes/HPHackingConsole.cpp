@@ -169,6 +169,11 @@ namespace HP
 		_hacking = true;
 		_canSpawn = false;
 		
+		World::GetActiveWorld()->Downcast<World>()->PlayMusic(0);
+		
+		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/computer_start.ogg");
+		World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+		
 		//PrintCommand(RNCSTR("cd /sbin/iggj7/"));
 		//PrintCommand(RNCSTR("./masterhack"));
 		

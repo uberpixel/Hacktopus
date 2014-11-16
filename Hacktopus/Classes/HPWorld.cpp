@@ -119,6 +119,12 @@ namespace HP
 			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 			_musicSource->SetRepeat(true);
 		}
+		if(i == 3)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_menu.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource->SetRepeat(true);
+		}
 		if(i == 4)
 		{
 			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_ende.ogg");
@@ -139,6 +145,11 @@ namespace HP
 	void World::LeftFromIntro()
 	{
 		_inIntro = false;
+		
+		PlayMusic(3);
+		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/ambient_sound1.ogg");
+		RN::openal::AudioSource *ambient = _audioWorld->PlaySound(audio);
+		ambient->SetRepeat(true);
 		
 		RN::Vector2 resolution = RN::Window::GetSharedInstance()->GetSize();
 		float aspect = resolution.y/resolution.x;
