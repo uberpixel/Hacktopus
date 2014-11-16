@@ -77,6 +77,7 @@ namespace HP
 		bottomPosition.z = roundf(bottomPosition.z);
 		
 		_topDoor->SetPosition(topPosition);
+		_topDoor->Translate(RN::Vector3(0.0f, 0.0f, 1000.0f));
 		_bottomDoor->SetPosition(bottomPosition);
 	}
 }
