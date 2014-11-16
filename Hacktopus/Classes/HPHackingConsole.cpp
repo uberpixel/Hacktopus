@@ -65,7 +65,7 @@ namespace HP
 		int32 count = static_cast<int32>(_wordlist->GetCount());
 		for(int32 i = count - 1; i >= 0; i --)
 		{
-			size_t index = random.GetRandomInt32Range(0, i + 1);
+			size_t index = random.GetRandomInt32Range(0, i);
 			
 			RN::Object *a = _wordlist->GetObjectAtIndex(index)->Retain();
 			RN::Object *b = _wordlist->GetObjectAtIndex(i)->Retain();
