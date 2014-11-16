@@ -14,7 +14,7 @@ uint32 times_win[3] = {
 };
 
 uint32 times_lose[1] = {
-	6000
+	1000
 };
 
 namespace HP
@@ -66,10 +66,18 @@ namespace HP
 		
 		if(_state == 3 || _state == 102)
 		{
-			Close();
-			_callback();
+			RN::MessageCenter::GetSharedInstance()->AddObserver(kRNInputEventMessage, [this](RN::Message *message) {
+				
+				RN::Kernel::GetSharedInstance()->ScheduleFunction([this] {
+					
+					_callback();
+					
+					Close();
+					RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
+					
+				});
+			}, this);
 			
-			RN::MessageCenter::GetSharedInstance()->RemoveObserver(this);
 			return;
 		}
 		
