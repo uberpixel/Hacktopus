@@ -39,6 +39,18 @@ namespace HP
 		}, this);
 	}
 	
+	HackingConsole::~HackingConsole()
+	{
+		_wordlist->Release();
+		_generator->Release();
+		
+		RN::SafeRelease(_widget);
+		RN::SafeRelease(_font);
+		RN::SafeRelease(_textColor);
+		RN::SafeRelease(_shadowColor);
+		RN::SafeRelease(_text);
+	}
+	
 	void HackingConsole::Update(float delta)
 	{
 		_cooldown -= delta;
@@ -73,6 +85,26 @@ namespace HP
 		
 		_widget->Close();
 		_widget->Release();
+		_widget = nullptr;
+		
+		RN::SafeRelease(_text);
+		
+		_text = new RN::String();
+		_active = false;
+		
+		_canSpawn = false;
+		
+		_wordlist->Release();
+		_wordlist = RN::JSONSerialization::JSONObjectFromData<RN::Array>(RN::Data::WithContentsOfFile("Words/words.json"));
+		_wordlist->Retain();
+		
+		_wasLastCorrect = true;
+		_wordlistIndex = 0;
+		_index = 0;
+		RN::SafeRelease(_input);
+		_input = new RN::String();
+		
+		ShuffleWords();
 	}
 	
 	void HackingConsole::Activate()

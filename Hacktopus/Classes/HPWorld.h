@@ -22,15 +22,18 @@ namespace HP
 	class World : public RN::World
 	{
 	public:
-		World();
+		World(bool becomeActiveImmediately = false);
 		~World() override;
 		
 		void LeftFromIntro();
 		void PlayOutro(bool win);
+		void Reset();
 		
 		void GameEnded();
 		
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
+		void FinishLoading(RN::Deserializer *deserializer) override;
+		
 		void Update(float delta) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
@@ -40,6 +43,7 @@ namespace HP
 	private:
 		bool _ended;
 		bool _inIntro;
+		bool _activeImmediately;
 		RN::Array *_enemies;
 		
 		RN::Camera *_camera;

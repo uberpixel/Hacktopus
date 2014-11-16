@@ -25,6 +25,9 @@ namespace HP
 		
 		void Start() override;
 		void WillExit() override;
+		
+	private:
+		World *_world;
 	};
 }
 

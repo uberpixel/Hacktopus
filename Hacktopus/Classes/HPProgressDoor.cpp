@@ -60,7 +60,7 @@ namespace HP
 					medizin->Translate(RN::Vector3(0.0f, -100.0f*delta));
 			});
 			
-			RN::Timer::ScheduledTimerWithDuration(std::chrono::seconds(1), []{World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);}, false);
+			RN::Timer::ScheduledTimerWithDuration(std::chrono::seconds(1), []{World::GetActiveWorld()->Downcast<World>()->PlayOutro(true);}, false);
 		}
 		
 		RN::Vector3 topPosition = _position+_offsetFactor*_progress;

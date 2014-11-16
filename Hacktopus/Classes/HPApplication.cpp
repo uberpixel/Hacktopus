@@ -25,25 +25,18 @@ namespace HP
 		
 		Intro *intro = new Intro();
 		
-		World *world = new World();
-		RN::WorldCoordinator::GetSharedInstance()->LoadWorld(world->Autorelease());
+		_world = new World();
 		
-		intro->Play([world]{
-			world->LeftFromIntro();
+		RN::WorldCoordinator::GetSharedInstance()->LoadWorld(_world->Autorelease());
+		
+		intro->Play([=] {
+			_world->LeftFromIntro();
 		});
 	}
 	
 	void Application::RecreateWorld()
 	{
-		RN::Kernel::GetSharedInstance()->Exit();
-		return; // Hack
-		
-		World *world = new World();
-		
-		RN::WorldCoordinator::GetSharedInstance()->LoadWorld(world->Autorelease());
-		RN::Kernel::GetSharedInstance()->ScheduleFunction([=]{
-			world->LeftFromIntro();
-		});
+		_world->Reset();
 	}
 	
 	void Application::WillExit()

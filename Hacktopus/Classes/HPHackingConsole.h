@@ -19,6 +19,7 @@ namespace HP
 	{
 	public:
 		HackingConsole();
+		~HackingConsole();
 		
 		void Activate();
 		void Deactivate();

@@ -11,11 +11,14 @@
 
 namespace HP
 {
-	World::World() :
+	World::World(bool becomeActive) :
 		RN::World("GenericSceneManager"),
 		_gamepad(nullptr),
 		_enemies(new RN::Array()),
 		_ended(false),
+		_console(nullptr),
+		_audioWorld(nullptr),
+		_activeImmediately(becomeActive),
 		_time(0),
 		_pressed(0),
 		_shakeStrength(0),
@@ -48,7 +51,38 @@ namespace HP
 	}
 	
 	World::~World()
-	{}
+	{
+		if(_audioWorld)
+			_audioWorld->Autorelease();
+		
+		if(_gamepad)
+		{
+			_gamepad->Deactivate();
+			_gamepad->Release();
+		}
+		
+		_rng->Release();
+		_enemies->Release();
+		
+		delete _console;
+	}
+	
+	void World::Reset()
+	{
+		Player::GetSharedInstance()->Reset();
+		ProgressDoor::GetSharedInstance()->Reset();
+		
+		_console->Deactivate();
+		_console->Activate();
+		
+		_inIntro = false;
+		_ended = false;
+		
+		_enemies->Enumerate<RN::SceneNode>([](RN::SceneNode *node, size_t index, bool &stop) {
+			node->RemoveFromWorld();
+		});
+		_enemies->RemoveAllObjects();
+	}
 	
 	void World::LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer)
 	{
@@ -56,6 +90,12 @@ namespace HP
 		
 		_camera = new RN::Camera(RN::Vector2(), RN::Texture::Format::RGB16F, (RN::Camera::Flags::Defaults | RN::Camera::Flags::Orthogonal) & ~RN::Camera::Flags::UseFog);
 		_camera->AddAttachment(audioListener);
+	}
+	
+	void World::FinishLoading(RN::Deserializer *deserializer)
+	{
+		if(_activeImmediately)
+			LeftFromIntro();
 	}
 	
 	void World::PlayOutro(bool win)
