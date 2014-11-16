@@ -30,6 +30,7 @@ namespace HP
 		
 	private:
 		AnimatableEntity *_body;
+		RN::Billboard *_eyes;
 		RN::Billboard *_lifes[5];
 		int _numberOfLifes;
 		
