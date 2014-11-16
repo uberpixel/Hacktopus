@@ -40,6 +40,8 @@ namespace HP
 		_callback = std::move(f);
 		_stopped = false;
 		
+		World::GetActiveWorld()->Downcast<World>()->PlayMusic(1);
+		
 		StepForward();
 		Open();
 		
@@ -47,6 +49,7 @@ namespace HP
 			
 			RN::Kernel::GetSharedInstance()->ScheduleFunction([this] {
 				
+				World::GetActiveWorld()->Downcast<World>()->PlayMusic(0);
 				_callback();
 				_stopped = true;
 				
@@ -88,6 +91,7 @@ namespace HP
 		
 		if(_state == 13)
 		{
+			World::GetActiveWorld()->Downcast<World>()->PlayMusic(0);
 			RN::AudioResource *audio = RN::AudioResource::WithFile("Intro/DUNDUNDUUUUUN.ogg");
 			World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
 		}

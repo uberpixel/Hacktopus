@@ -22,7 +22,8 @@ namespace HP
 		_time(0),
 		_pressed(0),
 		_shakeStrength(0),
-		_shakeTime(0)
+		_shakeTime(0),
+		_musicSource(nullptr)
 	{
 		_rng = new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister);
 		_inIntro = true;
@@ -96,6 +97,34 @@ namespace HP
 	{
 		if(_activeImmediately)
 			LeftFromIntro();
+	}
+	
+	void World::PlayMusic(int i)
+	{
+		if(i == 0 && _musicSource)
+		{
+			_musicSource->SetSelfdestruct(true);
+			_musicSource->Stop();
+			_musicSource = nullptr;
+		}
+		if(i == 1)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_intro_141019_HossaHossa.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource->SetRepeat(true);
+		}
+		if(i == 2)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_InGame.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource->SetRepeat(true);
+		}
+		if(i == 4)
+		{
+			RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/music_ende.ogg");
+			_musicSource = World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			_musicSource = nullptr;
+		}
 	}
 	
 	void World::PlayOutro(bool win)

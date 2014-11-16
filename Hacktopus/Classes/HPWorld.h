@@ -34,6 +34,8 @@ namespace HP
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void FinishLoading(RN::Deserializer *deserializer) override;
 		
+		void PlayMusic(int i);
+		
 		void Update(float delta) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
 		void Screenshake(float time = 0.15f, float strength = 0.2f);
@@ -54,6 +56,7 @@ namespace HP
 		float _shakeTime;
 		float _shakeStrength;
 		RN::openal::AudioWorld *_audioWorld;
+		RN::openal::AudioSource *_musicSource;
 		RN::GamepadDevice *_gamepad;
 		
 		uint32_t _pressed;

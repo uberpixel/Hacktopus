@@ -63,7 +63,7 @@ namespace HP
 		RN::Random::MersenneTwister random;
 		
 		int32 count = static_cast<int32>(_wordlist->GetCount());
-		for(int32 i = count - 1; i >= 0; i --)
+		for(int32 i = count - 1; i > 0; i --)
 		{
 			size_t index = random.GetRandomInt32Range(0, i);
 			
@@ -106,8 +106,6 @@ namespace HP
 		_input = new RN::String();
 		
 		RN::SafeRelease(_word);
-		
-		ShuffleWords();
 	}
 	
 	void HackingConsole::Activate()
@@ -155,6 +153,8 @@ namespace HP
 			PrintCommand(RNCSTR("Ultracorp 4000 Mainframe - Welcome"));
 			PrintCommand(RNCSTR("Select: [n]ew game, [h]elp, [e]xit"));
 			PrintCommand(RNCSTR("Confirm with [enter]"));
+			
+			ShuffleWords();
 		}
 		
 		_active  = true;
@@ -318,7 +318,10 @@ namespace HP
 		_wordlistIndex = (_wordlistIndex + 1) % _wordlist->GetCount();
 		
 		if(!_canSpawn && _wordlistIndex > 2)
+		{
 			_canSpawn = true;
+			World::GetActiveWorld()->Downcast<World>()->PlayMusic(2);
+		}
 		
 		if(_wordlistIndex == 0)
 		{

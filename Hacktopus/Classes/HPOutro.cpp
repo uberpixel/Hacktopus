@@ -39,13 +39,13 @@ namespace HP
 	void Outro::Play(RN::Function &&f, bool win)
 	{
 		_callback = std::move(f);
+		World::GetActiveWorld()->Downcast<World>()->PlayMusic(0);
 		
 		if(!win)
 		{
 			_state = 100;
 			
-			RN::AudioResource *audio = RN::AudioResource::WithFile("Outro/ende.ogg");
-			World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+			World::GetActiveWorld()->Downcast<World>()->PlayMusic(4);
 		}
 		
 		StepForward();
