@@ -24,7 +24,12 @@ namespace HP
 		_wordlist = RN::JSONSerialization::JSONObjectFromData<RN::Array>(RN::Data::WithContentsOfFile("Words/words.json"));
 		_wordlist->Retain();
 		
+#if RN_PLATFORM_WINDOWS
+		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18 * 2)->Retain();
+#else
 		_font = RN::UI::Font::WithName("Words/Inconsolata-Regular.ttf", 18)->Retain();
+#endif
+
 		_textColor = RN::UI::Color::WithRGB(0.055, 1, 0)->Retain();
 		_shadowColor = RN::UI::Color::WithRGB(0.055*0.8f, 1*0.8f, 0.2f)->Retain();
 		_text = new RN::String();
