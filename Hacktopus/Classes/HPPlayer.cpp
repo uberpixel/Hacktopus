@@ -61,8 +61,7 @@ namespace HP
 		
 		for(int i = 0; i < 5; i++)
 		{
-			_lifes[i] = new RN::Billboard(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
-			_lifes[i]->GetMaterial()->SetLighting(false);
+			_lifes[i]->SetTexture(RN::Texture::WithFile("Textures/health_button_green_50x50.png"));
 		}
 	}
 	
