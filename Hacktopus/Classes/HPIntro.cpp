@@ -9,11 +9,15 @@
 #include "HPIntro.h"
 #include "HPWorld.h"
 
-uint32 times[13] = {
-	500, 500, 1500, 1500,
-	1500, 1500, 1500,
+uint32 times[23] = {
+	1000, 500, 1500, 2000,
+	2000, 1500, 1500,
 	2000, 1500, 2500,
-	1000, 1500, 3800
+	1500, 2000, 1500,
+	2500, 2000, 1000,
+	2000, 2000, 1500,
+	1500, 1500, 2000,
+	2000
 };
 
 namespace HP
@@ -42,6 +46,9 @@ namespace HP
 		
 		World::GetActiveWorld()->Downcast<World>()->PlayMusic(1);
 		
+		RN::AudioResource *audio = RN::AudioResource::WithFile("Sounds/cough.ogg");
+		World::GetActiveWorld()->Downcast<World>()->GetAudioWorld()->PlaySound(audio);
+		
 		StepForward();
 		Open();
 		
@@ -63,7 +70,7 @@ namespace HP
 	RN::Texture *Intro::GetIntroImageWithID(size_t index)
 	{
 		std::stringstream stream;
-		stream << "Intro/intro_frame" << index << ".png";
+		stream << "Intro/intro_screens" << index << ".png";
 		
 		return RN::Texture::WithFile(stream.str());
 	}
@@ -75,7 +82,7 @@ namespace HP
 		
 		_state ++;
 		
-		if(_state >= 14)
+		if(_state >= 23)
 		{
 			Close();
 			_callback();
@@ -89,7 +96,7 @@ namespace HP
 		
 		RN::Timer::ScheduledTimerWithDuration(std::chrono::milliseconds(times[_state - 1]), [this]{ StepForward(); }, false);
 		
-		if(_state == 13)
+		if(_state == 21)
 		{
 			World::GetActiveWorld()->Downcast<World>()->PlayMusic(0);
 			RN::AudioResource *audio = RN::AudioResource::WithFile("Intro/DUNDUNDUUUUUN.ogg");
