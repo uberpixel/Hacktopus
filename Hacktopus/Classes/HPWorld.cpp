@@ -7,6 +7,7 @@
 //
 
 #include "HPWorld.h"
+#include "HPApplication.h"
 
 namespace HP
 {
@@ -14,8 +15,11 @@ namespace HP
 		RN::World("GenericSceneManager"),
 		_gamepad(nullptr),
 		_enemies(new RN::Array()),
+		_ended(false),
 		_time(0),
-		_pressed(0)
+		_pressed(0),
+		_shakeStrength(0),
+		_shakeTime(0)
 	{
 		_rng = new RN::RandomNumberGenerator(RN::RandomNumberGenerator::Type::MersenneTwister);
 		_inIntro = true;
@@ -57,8 +61,10 @@ namespace HP
 	void World::PlayOutro(bool win)
 	{
 		_inIntro = true;
+		_console->Deactivate();
+		
 		Outro *outro = new Outro();
-		outro->Play([&]{_inIntro = false;}, win);
+		outro->Play([&]{ Application::GetSharedInstance()->Downcast<Application>()->RecreateWorld(); }, win);
 	}
 	
 	void World::LeftFromIntro()
@@ -100,11 +106,19 @@ namespace HP
 		uiBillboard->GetMaterial()->SetCullMode(RN::Material::CullMode::None);
 		_camera->SetPriority(10000);*/
 		
-		Player::GetSharedInstance();
-		ProgressDoor::GetSharedInstance();
+		Player::GetSharedInstance()->Reset();
+		ProgressDoor::GetSharedInstance()->Reset();
 		
 		_console = new HackingConsole();
 		_console->Activate();
+	}
+	
+	void World::GameEnded()
+	{
+		_ended = true;
+		_enemies->Enumerate<RN::SceneNode>([](RN::SceneNode *node, size_t index, bool &stop) {
+			node->RemoveFromWorld();
+		});
 	}
 	
 	void World::Screenshake(float time, float strength)
@@ -115,7 +129,7 @@ namespace HP
 	
 	void World::Update(float delta)
 	{
-		if(_inIntro)
+		if(_inIntro || _ended)
 			return;
 		
 		if(!_console->IsHacking())

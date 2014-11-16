@@ -54,11 +54,18 @@ namespace HP
 		
 	}
 	
+	void Player::Reset()
+	{
+		_numberOfLifes = 4;
+	}
+	
 	void Player::RemoveLife()
 	{
 		if(_numberOfLifes < 0)
 		{
 			World::GetActiveWorld()->Downcast<World>()->PlayOutro(false);
+			World::GetActiveWorld()->Downcast<World>()->GameEnded();
+			
 			return;
 		}
 		

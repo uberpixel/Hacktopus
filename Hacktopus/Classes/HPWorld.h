@@ -28,6 +28,8 @@ namespace HP
 		void LeftFromIntro();
 		void PlayOutro(bool win);
 		
+		void GameEnded();
+		
 		void LoadOnThread(RN::Thread *thread, RN::Deserializer *deserializer) override;
 		void Update(float delta) override;
 		RN::openal::AudioWorld *GetAudioWorld(){return _audioWorld;}
@@ -36,6 +38,7 @@ namespace HP
 		bool IsInIntro(){return _inIntro;}
 		
 	private:
+		bool _ended;
 		bool _inIntro;
 		RN::Array *_enemies;
 		

@@ -21,6 +21,8 @@ namespace HP
 		HackingConsole();
 		
 		void Activate();
+		void Deactivate();
+		
 		void StartHacking();
 		
 		void Update(float delta);

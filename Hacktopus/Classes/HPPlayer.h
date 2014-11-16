@@ -22,6 +22,8 @@ namespace HP
 		Player();
 		~Player();
 		
+		void Reset();
+		
 		void Attack(Enemy *target);
 		void RemoveLife();
 		void KeepTyping();

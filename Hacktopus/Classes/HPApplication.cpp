@@ -33,6 +33,19 @@ namespace HP
 		});
 	}
 	
+	void Application::RecreateWorld()
+	{
+		RN::Kernel::GetSharedInstance()->Exit();
+		return; // Hack
+		
+		World *world = new World();
+		
+		RN::WorldCoordinator::GetSharedInstance()->LoadWorld(world->Autorelease());
+		RN::Kernel::GetSharedInstance()->ScheduleFunction([=]{
+			world->LeftFromIntro();
+		});
+	}
+	
 	void Application::WillExit()
 	{}
 }

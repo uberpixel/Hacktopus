@@ -66,6 +66,15 @@ namespace HP
 		}
 	}
 	
+	void HackingConsole::Deactivate()
+	{
+		if(!_active)
+			return;
+		
+		_widget->Close();
+		_widget->Release();
+	}
+	
 	void HackingConsole::Activate()
 	{
 		if(_active)
@@ -103,8 +112,8 @@ namespace HP
 			widgetRect.height *= resolution.y/600.0f;
 			
 			_widget = new RN::UI::Widget(RN::UI::Widget::Style::Borderless, widgetRect);
-			_widget->GetContentView()->AddSubview(_shadow);
-			_widget->GetContentView()->AddSubview(_label);
+			_widget->GetContentView()->AddSubview(_shadow->Autorelease());
+			_widget->GetContentView()->AddSubview(_label->Autorelease());
 			_widget->GetContentView()->SetBackgroundColor(RN::UI::Color::ClearColor());
 			_widget->Open();
 		

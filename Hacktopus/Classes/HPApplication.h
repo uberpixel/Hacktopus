@@ -21,6 +21,8 @@ namespace HP
 		Application();
 		~Application() override;
 		
+		void RecreateWorld();
+		
 		void Start() override;
 		void WillExit() override;
 	};
