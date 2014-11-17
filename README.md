@@ -1,5 +1,6 @@
-A fUcking AWesomeGAME about an Octopus. Winning entry on the 7th Inno Games game jam!
+A game about an Octopus with a sick and dying mom. Because he loves his mother dearly, the Octopus decides to hack into the Research Facilities Mainframe to get access to the medicine store and help his mom. His name is Hecktor. He is The Hacktopus.
 
-Binaries for donwload:  
-PC: http://tinyurl.com/or2vmrl  
-Mac: http://tinyurl.com/o8d6322
+## Pre-Compiled binaries
+
+PC: rayne3d.com/static/gamejam/Hacktopus-Win.zip
+Mac: rayne3d.com/static/gamejam/Hacktopus-OSX.zip

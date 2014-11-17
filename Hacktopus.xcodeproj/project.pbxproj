@@ -23,7 +23,7 @@
 		E934C3981A168A6A00742985 /* HPApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3941A168A6A00742985 /* HPApplication.h */; };
 		E934C3991A168A6A00742985 /* HPWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E934C3951A168A6A00742985 /* HPWorld.cpp */; };
 		E934C39A1A168A6A00742985 /* HPWorld.h in Headers */ = {isa = PBXBuildFile; fileRef = E934C3961A168A6A00742985 /* HPWorld.h */; };
-		E94A226D1A17702100189A85 /* libopenal.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = E94A226C1A17702100189A85 /* libopenal.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		E96A6C701A1A426C00B065AF /* libopenal.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = E94A226C1A17702100189A85 /* libopenal.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E9BFB6981A16BDFD0008044D /* HPHackingConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB6961A16BDFD0008044D /* HPHackingConsole.cpp */; };
 		E9BFB6991A16BDFD0008044D /* HPHackingConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = E9BFB6971A16BDFD0008044D /* HPHackingConsole.h */; };
 		E9BFB69F1A16E9DA0008044D /* HPAnimatableEntity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9BFB69D1A16E9DA0008044D /* HPAnimatableEntity.cpp */; };
@@ -31,13 +31,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E94A226B1A17700E00189A85 /* CopyFiles */ = {
+		E96A6C6F1A1A426400B065AF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 6;
+			dstSubfolderSpec = 10;
 			files = (
-				E94A226D1A17702100189A85 /* libopenal.1.dylib in CopyFiles */,
+				E96A6C701A1A426C00B065AF /* libopenal.1.dylib in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +168,7 @@
 				E915B6381A168A1A00D1F435 /* Frameworks */,
 				E915B6391A168A1A00D1F435 /* Headers */,
 				E915B63A1A168A1A00D1F435 /* ShellScript */,
-				E94A226B1A17700E00189A85 /* CopyFiles */,
+				E96A6C6F1A1A426400B065AF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -328,6 +328,7 @@
 					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal/include\"",
 				);
 				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/,
@@ -359,6 +360,7 @@
 					"\"$(SRCROOT)/Hacktopus/Resources/Modules/rayne-openal/include\"",
 				);
 				INFOPLIST_FILE = "Hacktopus/Supporting files/Hacktopus-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/lib/,
